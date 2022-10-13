@@ -17,13 +17,4 @@ public class BankApplication {
   public static void main(String[] args) {
     SpringApplication.run(BankApplication.class, args);
   }
-
-  @Bean
-  public CommandLineRunner commandLineRunner() {
-    return args -> {
-      roleRepository.save(new Role("USER"));
-      roleRepository.save(new Role("ADMIN"));
-    };
-  }
-
 }
