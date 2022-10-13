@@ -96,7 +96,7 @@ Application is using Retrofit to get latest currency rates. You can choose from 
 
 Now you are able to create new accounts with "/create/account" endpoint passing account type as parameter.  
 There are 3 types of accounts: CLASSIC, SAVING, INVESTOR.  
-For example investor account can generate money in a period of time but there is a chance of loosing money to.
+For example investor account can generate money in a period of time but there is a chance of loosing money.
 
 ```java
 @RequestMapping(value = "api/create/account", method = PUT)
@@ -108,7 +108,7 @@ For example investor account can generate money in a period of time but there is
 POST Transaction endpoint ("api/transaction")  
 With this endpoint it is possible to transfer amounts of money to another accounts using IBAN format.  
 You can make transactions in available currencies and API will convert them from base currency (EUR).  
-All transactions (realised or not realised) are stored and accessible from databe.
+All transactions (realised or not realised) are stored and accessible from database.
 
 ```json
 {
