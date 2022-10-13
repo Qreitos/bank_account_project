@@ -1,6 +1,5 @@
 package com.bank.account.model.entity;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,12 +11,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "customers")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Customer {
 
   @Id
@@ -27,9 +28,13 @@ public class Customer {
   private String forName;
   private String surName;
   private String password;
-  private Date birthDate;
+  private String birthDate;
   @OneToMany(mappedBy = "customer", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
   private List<Account> accounts;
   @ManyToMany(fetch = FetchType.EAGER)
   private List<Role> roles;
+
+  public void addAccount(Account account) {
+    accounts.add(account);
+  }
 }

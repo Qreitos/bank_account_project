@@ -4,9 +4,9 @@ plugins {
     id 'java'
 }
 
-group = 'com.bank'
+group = 'com.qreitos'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
     compileOnly {
@@ -19,19 +19,29 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'io.github.cdimascio:java-dotenv:5.2.2'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'mysql:mysql-connector-java'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test:5.7.3'
+    implementation 'org.springframework:spring-web:5.3.23'
+    implementation 'mysql:mysql-connector-java:8.0.30'
     implementation 'org.springframework.security:spring-security-web:5.7.3'
-    implementation 'org.springframework.security:spring-security-core:5.7.3'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-core:5.7.3'
     implementation 'com.auth0:java-jwt:4.0.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.security:spring-security-test:5.7.3'
+    testImplementation 'com.h2database:h2:2.1.214'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
 }
 
 tasks.named('test') {

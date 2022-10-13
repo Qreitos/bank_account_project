@@ -32,30 +32,42 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, // incoming request that we want to validate
-      @NotNull HttpServletResponse response, // response is going to be the content of endpoint, or error message
+      @NotNull HttpServletResponse response,
+      // response is going to be the content of endpoint, or error message
       @NotNull FilterChain filterChain) // actual filterChain from SecurityConfig
       throws IOException {
-    String authorizationHeader = request.getHeader(AUTHORIZATION); // header is part of request, and we are checking for Authorization there
+    String authorizationHeader = request.getHeader(
+        AUTHORIZATION); // header is part of request, and we are checking for Authorization there
     try {
-      if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) { // JWT token starts with "Bearer "
-        String token = authorizationHeader.substring("Bearer ".length()); // but we want only the rest of that String
+      if (authorizationHeader != null && authorizationHeader.startsWith(
+          "Bearer ")) { // JWT token starts with "Bearer "
         Dotenv dotenv = Dotenv.load(); // this is loading values from .env file you are storing locally
+        String token = authorizationHeader.substring(
+            "Bearer ".length()); // but we want only the rest of that String
         Algorithm algorithm =
             Algorithm.HMAC256(
                 Objects.requireNonNull(dotenv.get("JWT_SECRET_KEY"))
-                    .getBytes(StandardCharsets.UTF_8)); // this is algorithm used to sign or verify third part of JWT token
-        JWTVerifier verifier = JWT.require(algorithm).build(); // setting up a verifier and using that algorithm, we created
-        DecodedJWT decodedJWT = verifier.verify(token); // decodedJWT contains information about username, expiration time, roles of user etc.
+                    .getBytes(
+                        StandardCharsets.UTF_8)); // this is algorithm used to sign or verify third part of JWT token
+        JWTVerifier verifier = JWT.require(algorithm)
+            .build(); // setting up a verifier and using that algorithm, we created
+        DecodedJWT decodedJWT = verifier.verify(
+            token); // decodedJWT contains information about username, expiration time, roles of user etc.
         String username = decodedJWT.getSubject(); // we get username of actual user like this
-        String[] roles = decodedJWT.getClaim("roles").asArray(String.class); // and this is how we extract his roles
+        String[] roles = decodedJWT.getClaim("roles")
+            .asArray(String.class); // and this is how we extract his roles
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>(); // we need to convert his roles into "Security format"
-        stream(roles).forEach(role -> authorities.add(new SimpleGrantedAuthority(role))); // and we do it with this stream
+        stream(roles).forEach(role -> authorities.add(
+            new SimpleGrantedAuthority(role))); // and we do it with this stream
         UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(username, null, authorities); // with this information we can create authentication token
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken); // now we are authenticated in SecurityContextHolder
+            new UsernamePasswordAuthenticationToken(username, null,
+                authorities); // with this information we can create authentication token
+        SecurityContextHolder.getContext().setAuthentication(
+            authenticationToken); // now we are authenticated in SecurityContextHolder
         filterChain.doFilter(request, response); // and our filterChain is accepting our request
       } else {
-        throw new Exception("Access denied."); // if we do not provide authorization header, we are going to get this exception
+        throw new Exception(
+            "Access denied."); // if we do not provide authorization header, we are going to get this exception
       }
     } catch (Exception e) { // and all exceptions are caught in here
       response.setHeader("error", e.getMessage()); // we put exception message into header

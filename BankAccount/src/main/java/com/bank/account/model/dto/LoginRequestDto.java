@@ -1,9 +1,12 @@
 package com.bank.account.model.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class LoginDto {
+@AllArgsConstructor
+public class LoginRequestDto {
+
   private int loginNumber;
   private String password;
 }

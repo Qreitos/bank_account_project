@@ -1,10 +1,10 @@
-package com.bank.account;
+package com.qreitos.bank;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BankAccountApplicationTests {
+class BankApplicationTests {
 
   @Test
   void contextLoads() {

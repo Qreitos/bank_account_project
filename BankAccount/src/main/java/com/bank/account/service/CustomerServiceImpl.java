@@ -2,8 +2,14 @@ package com.bank.account.service;
 
 import static com.bank.account.security.SecurityConfig.TOKEN_EXPIRATION_TIME;
 
-import com.bank.account.model.dto.LoginDto;
-import com.bank.account.model.dto.RegistrationDto;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.bank.account.enums.AccountType;
+import com.bank.account.model.dto.CustomerResponseDto;
+import com.bank.account.model.dto.LoginRequestDto;
+import com.bank.account.model.dto.RegistrationRequestDto;
 import com.bank.account.model.entity.Account;
 import com.bank.account.model.entity.Customer;
 import com.bank.account.repository.AccountRepository;
@@ -16,12 +22,11 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -32,10 +37,40 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class CustomerServiceImpl implements CustomerService {
 
   private final CustomerRepository customerRepository;
+
   private final AccountRepository accountRepository;
 
   @Override
-  public void createAndSaveNewCustomer(RegistrationDto registrationDto) {
+  public CustomerResponseDto transferCustomerToDto(Customer customer) {
+    log.info("Creating response DTO");
+
+    return new CustomerResponseDto(customer.getCustomerId(), customer.getForName(),
+        customer.getSurName(), customer.getBirthDate(), customer.getAccounts());
+  }
+
+  @Override
+  public Customer getCustomerFromToken(String token) {
+    log.info("Decoding token");
+
+    Dotenv dotenv = Dotenv.load();
+    Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get("JWT_SECRET_KEY"))
+        .getBytes(StandardCharsets.UTF_8));
+
+    JWTVerifier verifier = JWT.require(algorithm).build();
+
+    DecodedJWT decodedJWT = verifier.verify(token);
+
+    log.info("Checking JWT payload");
+    String loginNumber = decodedJWT.getSubject();
+    int logNumber = Integer.parseInt(loginNumber);
+
+    return getCustomerByLoginNumber(logNumber);
+  }
+
+  @Override
+  @Transactional
+  public Integer createAndSaveNewCustomer(RegistrationRequestDto registrationDto) {
+    log.info("Creating new customer");
 
     Random random = new Random();
     int newLoginNumber;
@@ -52,14 +87,17 @@ public class CustomerServiceImpl implements CustomerService {
     newCustomer.setPassword(registrationDto.getPassword());
     newCustomer.setBirthDate(registrationDto.getBirthDate());
 
+    log.info("Creating new account");
     Account newAccount = new Account(newCustomer);
+    newAccount.setAccountType(AccountType.CLASSIC);
 
     accountRepository.save(newAccount);
     customerRepository.save(newCustomer);
+    return newLoginNumber;
   }
 
   @Override
-  public String authentication(LoginDto customerLogin) {
+  public String authentication(LoginRequestDto customerLogin) {
 
     if (customerRepository.findCustomerByLoginNumber(customerLogin.getLoginNumber()) == null) {
       log.info("Login failed: loginNumber");
@@ -74,7 +112,8 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public UserDetails getUserByLoginNumber(int loginNumber) {
+  public UserDetails loadUserByLoginNumber(int loginNumber) {
+    log.info("Loading customer");
 
     Customer customer = customerRepository.findCustomerByLoginNumber(loginNumber);
     String logNumber = String.valueOf(loginNumber);
@@ -89,6 +128,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public String getToken(UserDetails loggingUser) {
+    log.info("Creating JWT");
 
     Dotenv dotenv = Dotenv.load();
 
@@ -113,5 +153,12 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList())) // saving roles of user into JWT
         .sign(algorithm); // signing JWT with algorithm from JWT_SECRET_KEY
+  }
+
+  @Override
+  public Customer getCustomerByLoginNumber(int loginNumber) {
+    log.info("Finding customer in repository");
+
+    return customerRepository.findCustomerByLoginNumber(loginNumber);
   }
 }
