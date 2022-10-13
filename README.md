@@ -1,4 +1,4 @@
-# bank_account_project
+# Bank Account Project
 
 Bank Account rest API
 
