@@ -2,7 +2,7 @@
 
 Bank Account rest API
 
-With this API you can register new users create diferent types of accounts and transfer money from one to another.  
+With this API you can register new users create different types of accounts and transfer money from one to another.  
 Application is using Spring boot, JWT Authorization, Retrofit, Flyway and MySQL.
 
 POST registration endpoint ("/api/register")
