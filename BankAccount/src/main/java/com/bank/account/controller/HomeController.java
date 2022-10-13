@@ -64,7 +64,8 @@ public class HomeController {
 
     try {
       String base64Token = token.replace(token.substring(0, 7), "");
-      accountService.createAccount(customerService.getCustomerFromToken(base64Token), accountType);
+      accountService.createAccount(customerService.getCustomerFromToken(base64Token),
+          accountType.toUpperCase());
     } catch (Exception e) {
       throw new CreateAccountErrorException(e.getMessage());
     }

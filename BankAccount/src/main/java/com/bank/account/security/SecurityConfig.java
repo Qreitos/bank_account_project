@@ -17,7 +17,11 @@ public class SecurityConfig {
 
   @Bean
   public WebSecurityCustomizer webSecurityCustomizer() {
-    return (web) -> web.ignoring().antMatchers("/api/login/**", "/api/register/**");
+    return (web) -> web.ignoring().antMatchers("/api/login/**",
+        "/api/register/**",
+        "/api/information/**",
+        "/resources/**",
+        "/*");
   }
 
   @Bean
