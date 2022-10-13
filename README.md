@@ -1,6 +1,10 @@
 # Bank Account Project
 
+<img src="https://img.shields.io/github/deployments/Qreitos/bank_account_project/bank-account-project?style=for-the-badge"> <img src ="https://img.shields.io/security-headers?style=for-the-badge&url=https%3A%2F%2Fbank-account-project.herokuapp.com%2Fapi%2F">
+
 Bank Account rest API
+
+[INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
 With this API you can register new users create different types of accounts and transfer money from one to another.  
 Application is using Spring boot, JWT Authorization, Retrofit, Flyway and MySQL.
