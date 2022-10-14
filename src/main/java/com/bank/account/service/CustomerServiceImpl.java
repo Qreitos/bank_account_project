@@ -79,8 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     do {
       newLoginNumber = random.nextInt(100000) + 10001;
-    }
-    while (customerRepository.findCustomerByLoginNumber(newLoginNumber) != null);
+    } while (customerRepository.findCustomerByLoginNumber(newLoginNumber) != null);
 
     Customer newCustomer = new Customer();
     newCustomer.setLoginNumber(newLoginNumber);
