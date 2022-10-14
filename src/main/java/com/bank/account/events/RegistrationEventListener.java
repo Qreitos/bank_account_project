@@ -36,7 +36,7 @@ public class RegistrationEventListener implements ApplicationListener<OnRegistra
         "Hello, "
             + customer.getForName()
             + "!\n\n Please use this token for confirmation of your account by POST method "
-            + "(/api/confirmation?token=[your_token]"
+            + "(/api/verification?token=[your_token]"
             + ("\n\n" + token + "\n\nThank you and have a nice day. :)"));
 
     javaMailSender.send(mailMessage);

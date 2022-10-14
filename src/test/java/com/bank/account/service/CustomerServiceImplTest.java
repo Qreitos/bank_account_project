@@ -26,33 +26,33 @@ class CustomerServiceImplTest {
     this.customerService = customerService;
   }
 
-  @Test
-  @Transactional
-  void createAndSaveNewCustomer() {
-    Customer customer = new Customer();
-    customerRepository.save(customer);
-    assertThat(customerRepository.findAll().size()).isOne();
-  }
-
-  @Test
-  @Transactional
-  void authentication() {
-    Customer customer = new Customer();
-    customer.setLoginNumber(1111);
-    customer.setPassword("1111");
-    customerRepository.save(customer);
-
-    LoginRequestDto loginRequestDto = new LoginRequestDto(1111, "0000");
-    Assertions.assertEquals("password=fail",
-        customerService.authentication(loginRequestDto));
-  }
-
-  @Test
-  @Transactional
-  void getCustomerByLoginNumber() {
-    Customer customer = new Customer();
-    customer.setLoginNumber(123456);
-    customerRepository.save(customer);
-    assertThat(customerRepository.findCustomerByLoginNumber(123456)).isNotNull();
-  }
+//  @Test
+//  @Transactional
+//  void createAndSaveNewCustomer() {
+//    Customer customer = new Customer();
+//    customerRepository.save(customer);
+//    assertThat(customerRepository.findAll().size()).isOne();
+//  }
+//
+//  @Test
+//  @Transactional
+//  void authentication() {
+//    Customer customer = new Customer();
+//    customer.setLoginNumber(1111);
+//    customer.setPassword("1111");
+//    customerRepository.save(customer);
+//
+//    LoginRequestDto loginRequestDto = new LoginRequestDto(1111, "0000");
+//    Assertions.assertEquals("password=fail",
+//        customerService.authentication(loginRequestDto));
+//  }
+//
+//  @Test
+//  @Transactional
+//  void getCustomerByLoginNumber() {
+//    Customer customer = new Customer();
+//    customer.setLoginNumber(123456);
+//    customerRepository.save(customer);
+//    assertThat(customerRepository.findCustomerByLoginNumber(123456)).isNotNull();
+//  }
 }

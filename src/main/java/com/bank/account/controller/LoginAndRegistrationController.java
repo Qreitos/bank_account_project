@@ -83,7 +83,7 @@ public class LoginAndRegistrationController {
             newLoginNumber, ACCEPTED, ZonedDateTime.now()));
   }
 
-  @RequestMapping(value = "/confirmation", method = POST)
+  @RequestMapping(value = "/verification", method = POST)
   public ResponseEntity<ConfirmationResponseDto> emailConfirmation(
       @RequestParam(name = "token") String token) {
 
