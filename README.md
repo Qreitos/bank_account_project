@@ -53,10 +53,6 @@ Authorization is done by JWT
 org.springframework.security.core.userdetails.User loggingUser =
         (org.springframework.security.core.userdetails.User)
             customerService.loadUserByLoginNumber(customerLogin.getLoginNumber());
-
-    return ResponseEntity.ok()
-        .body(new LoginResponseDto("Login successful", HttpStatus.OK,
-            ZonedDateTime.now(), customerService.getToken(loggingUser)));
 ```
 
 ```json
@@ -73,24 +69,11 @@ GET Home endpoint ("/api/home?currency=eur")
 After successful login you are able to call home endpoint with JWT and currency parameter
 
 ```java
-@Override
-  public Customer getCustomerFromToken(String token) {
-    log.info("Decoding token");
+log.info("Decoding token");
 
-    Dotenv dotenv = Dotenv.load();
-    Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get("JWT_SECRET_KEY"))
-        .getBytes(StandardCharsets.UTF_8));
-
-    JWTVerifier verifier = JWT.require(algorithm).build();
-
-    DecodedJWT decodedJWT = verifier.verify(token);
-
-    log.info("Checking JWT payload");
-    String loginNumber = decodedJWT.getSubject();
-    int logNumber = Integer.parseInt(loginNumber);
-
-    return getCustomerByLoginNumber(logNumber);
-  }
+Dotenv dotenv = Dotenv.load();
+Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get("JWT_SECRET_KEY"))
+    .getBytes(StandardCharsets.UTF_8));
 ```
 API will respond with CustomerResponseDto which contains info about customer and all accounts.  
 Application is using Retrofit to get latest currency rates. You can choose from 150 currencies.
