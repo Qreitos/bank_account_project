@@ -21,19 +21,21 @@ public class AccountExceptionHandler {
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   public ErrorResponseDto handleCreateAccountException(CreateAccountErrorException e) {
 
-    return new ErrorResponseDto(environment.getProperty("config.errors.create_account_error") +
-        " " + e.getMessage(),
-        HttpStatus.INTERNAL_SERVER_ERROR,
-        ZonedDateTime.now());
+    return
+        new ErrorResponseDto(environment.getProperty("config.errors.create_account_error")
+            + " " + e.getMessage(),
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            ZonedDateTime.now());
   }
 
   @ExceptionHandler(TransactionErrorException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
   public ErrorResponseDto handleTransactionErrorException(TransactionErrorException e) {
 
-    return new ErrorResponseDto(environment.getProperty("config.errors.transaction_error") +
-        " " + e.getMessage(),
-        HttpStatus.INTERNAL_SERVER_ERROR,
-        ZonedDateTime.now());
+    return
+        new ErrorResponseDto(environment.getProperty("config.errors.transaction_error")
+            + " " + e.getMessage(),
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            ZonedDateTime.now());
   }
 }

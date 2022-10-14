@@ -21,19 +21,21 @@ public class CustomerExceptionHandler {
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
   public ErrorResponseDto handleLoginException(LoginErrorException e) {
 
-    return new ErrorResponseDto(environment.getProperty("config.errors.log_in_error" +
-        " " + e.getMessage()),
-        HttpStatus.NOT_FOUND,
-        ZonedDateTime.now());
+    return
+        new ErrorResponseDto(environment.getProperty("config.errors.log_in_error"
+            + " " + e.getMessage()),
+            HttpStatus.NOT_FOUND,
+            ZonedDateTime.now());
   }
 
   @ExceptionHandler(RegistrationErrorException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
   public ErrorResponseDto handleRegistrationException(RegistrationErrorException e) {
 
-    return new ErrorResponseDto(environment.getProperty("config.errors.register_error" +
-        " " + e.getMessage()),
-        HttpStatus.NOT_FOUND,
-        ZonedDateTime.now());
+    return
+        new ErrorResponseDto(environment.getProperty("config.errors.register_error"
+            + " " + e.getMessage()),
+            HttpStatus.NOT_FOUND,
+            ZonedDateTime.now());
   }
 }
