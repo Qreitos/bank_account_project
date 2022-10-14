@@ -8,6 +8,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.4'
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
+    id 'checkstyle'
     id "org.flywaydb.flyway" version "9.4.0"
 }
 
@@ -82,4 +83,16 @@ flyway {
     password = props.getProperty("DB_PASSWORD")
     schemas = 'BankHistory'
     cleanDisabled = false
+}
+
+//checkstyle
+checkstyle {
+    toolVersion "8.32"
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'src/test/java'
 }
