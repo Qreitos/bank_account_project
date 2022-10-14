@@ -20,6 +20,7 @@ public class SecurityConfig {
     return (web) -> web.ignoring().antMatchers("/api/login/**",
         "/api/register/**",
         "/api/information/**",
+        "/api/confirmation/**",
         "/resources/**",
         "/*");
   }

@@ -12,8 +12,10 @@ import com.bank.account.model.dto.LoginRequestDto;
 import com.bank.account.model.dto.RegistrationRequestDto;
 import com.bank.account.model.entity.Account;
 import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.VerificationToken;
 import com.bank.account.repository.AccountRepository;
 import com.bank.account.repository.CustomerRepository;
+import com.bank.account.repository.VerificationTokenRepository;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -37,8 +39,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class CustomerServiceImpl implements CustomerService {
 
   private final CustomerRepository customerRepository;
-
   private final AccountRepository accountRepository;
+  private final VerificationTokenRepository tokenRepository;
 
   @Override
   public CustomerResponseDto transferCustomerToDto(Customer customer) {
@@ -86,6 +88,7 @@ public class CustomerServiceImpl implements CustomerService {
     newCustomer.setSurName(registrationDto.getSurName());
     newCustomer.setPassword(registrationDto.getPassword());
     newCustomer.setBirthDate(registrationDto.getBirthDate());
+    newCustomer.setEmail(registrationDto.getEmail());
 
     log.info("Creating new account");
     Account newAccount = new Account(newCustomer);
@@ -160,5 +163,28 @@ public class CustomerServiceImpl implements CustomerService {
     log.info("Finding customer in repository");
 
     return customerRepository.findCustomerByLoginNumber(loginNumber);
+  }
+
+  @Override
+  public Customer getCustomerByVerificationToken(String verificationToken) {
+    return tokenRepository
+        .findVerificationTokenByToken(verificationToken)
+        .getCustomer();
+  }
+
+  @Override
+  public VerificationToken getVerificationToken(String verificationToken) {
+    return tokenRepository.findVerificationTokenByToken(verificationToken);
+  }
+
+  @Override
+  public void createVerificationToken(Customer customer, String token) {
+    VerificationToken verificationToken = new VerificationToken(token, customer);
+    tokenRepository.save(verificationToken);
+  }
+
+  @Override
+  public void saveCustomer(Customer customer) {
+    customerRepository.save(customer);
   }
 }

@@ -64,6 +64,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
     testImplementation 'com.h2database:h2:2.1.214'
+    //emailVerification
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.4'
 }
 
 tasks.named('test') {

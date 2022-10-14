@@ -1,5 +1,6 @@
 package com.bank.account.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,6 +30,9 @@ public class Customer {
   private String surName;
   private String password;
   private String birthDate;
+  private String email;
+  @JsonIgnore
+  private boolean enabled = false;
   @OneToMany(mappedBy = "customer", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
   private List<Account> accounts;
   @ManyToMany(fetch = FetchType.EAGER)
