@@ -1,8 +1,10 @@
 # Bank Account Project
 
-<img src="https://img.shields.io/github/deployments/Qreitos/bank_account_project/bank-account-project?style=for-the-badge"> <img src ="https://img.shields.io/security-headers?style=for-the-badge&url=https%3A%2F%2Fbank-account-project.herokuapp.com%2Fapi%2F">
+<img src="https://img.shields.io/github/deployments/Qreitos/bank_account_project/bank-account-project?style=for-the-badge"> <img src ="https://img.shields.io/security-headers?style=for-the-badge&url=https%3A%2F%2Fbank-account-project.herokuapp.com%2Fapi%2F">  
 
-Bank Account rest API
+Bank Account rest API  
+
+[![Build and Tests](https://github.com/Qreitos/bank_account_project/actions/workflows/builds_and_tests.yml/badge.svg?branch=main)](https://github.com/Qreitos/bank_account_project/actions/workflows/builds_and_tests.yml)
 
 [INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
