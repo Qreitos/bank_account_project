@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEvent;
 @Getter
 @Setter
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
+
   private String appUrl;
   private Customer customer;
 

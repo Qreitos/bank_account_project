@@ -15,9 +15,17 @@
       <li>surName</li>
       <li>password</li>
       <li>birthDate</li>
+      <li>email</li>
     </ul>
-    <h4>After successful registration copy your login number</h4>
+    <h4>After successful registration copy your login number, then verify your email</h4>
     <img src="/registration.png">
+  </div>
+  <div>
+    <h3>Email verification</h3>
+    <ul>
+      <li>POST: /api/confirmation?token={yourToken}</li>
+    </ul>
+    <h4>Send token from email as parameter</h4>
   </div>
   <div>
     <h3>Login instructions</h3>
@@ -27,7 +35,7 @@
     </ul>
     <h4>Login with your login number and password</h4>
     <h4>With successful login you will get access token,<br>
-    copy token to authorization bearer token.</h4>
+      copy token to authorization bearer token.</h4>
     <img src="/login.png"> <br>
     <img src="/token.png">
   </div>

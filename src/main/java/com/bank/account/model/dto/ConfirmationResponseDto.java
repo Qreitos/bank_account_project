@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 @Data
 @AllArgsConstructor
 public class ConfirmationResponseDto {
+
   private String status;
   private final HttpStatus httpStatus;
   private final ZonedDateTime responseDate;

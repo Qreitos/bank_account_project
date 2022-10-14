@@ -80,6 +80,6 @@ flyway {
     url = props.getProperty("DB_URL")
     user = props.getProperty("DB_USERNAME")
     password = props.getProperty("DB_PASSWORD")
-    schemas = 'TribesHistory'
+    schemas = 'BankHistory'
     cleanDisabled = false
 }

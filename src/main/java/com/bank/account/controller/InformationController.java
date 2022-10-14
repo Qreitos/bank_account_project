@@ -1,6 +1,6 @@
 package com.bank.account.controller;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
