@@ -8,6 +8,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.4'
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
+    id 'jacoco'
     id 'checkstyle'
     id "org.flywaydb.flyway" version "9.4.0"
 }
@@ -95,4 +96,28 @@ checkstyleMain {
 }
 checkstyleTest {
     source = 'src/test/java'
+}
+
+//jacoco
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        html.required = true
+        csv.required = true
+        csv.enabled(true)
+        html.enabled(true)
+        csv.outputLocation = file("build/reports/jacoco/test/jacocoTestReport.csv")
+        html.outputLocation = file("build/reports/jacoco/test/jacocoTestReport.html")
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ["/models/", "/exceptions/"])
+        }))
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
