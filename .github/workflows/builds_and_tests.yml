@@ -1,0 +1,50 @@
+name: Build and Tests
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 18
+        uses: actions/setup-java@v2
+        with:
+          java-version: 18
+          distribution: 'adopt'
+          cache: gradle
+      - name: Create env file
+        run: |
+          touch .env
+          cat .env
+            echo JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }} >> .env
+      - name: Check style in Main
+        run: gradle checkstyleMain
+      - name: Check style in Test
+        run: gradle checkstyleTest
+      - name: Run Tests
+        run: gradle test --stacktrace
+      - name: Build without checks and tests
+        run: gradle build -x test -x checkstyleMain -x checkStyleTest
+      - name: Run Jacoco Test Report
+        run: gradle jacocoTestReport
+      - name: Run Jacoco Test Coverage Verification
+        run: gradle jacocoTestCoverageVerification
+      - name: Archive test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Testing success report
+          path: build/reports/tests/test
+      - name: Generate JaCoCo Badge
+        id: jacoco
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+          badges-directory: badges
+          generate-branches-badge: true
+          generate-summary: true
