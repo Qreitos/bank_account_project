@@ -9,6 +9,8 @@ import com.bank.account.exception.LoginErrorException;
 import com.bank.account.exception.TransactionErrorException;
 import com.bank.account.model.dto.AccountCreateResponseDto;
 import com.bank.account.model.dto.CustomerResponseDto;
+import com.bank.account.model.dto.TransactionsDto;
+import com.bank.account.model.entity.Customer;
 import com.bank.account.model.entity.Transaction;
 import com.bank.account.service.AccountService;
 import com.bank.account.service.CustomerService;
@@ -83,7 +85,9 @@ public class HomeController {
 
     Transaction newTransaction;
     try {
-      newTransaction = accountService.realiseTransaction(
+      String base64Token = token.replace(token.substring(0, 7), "");
+      newTransaction =
+          accountService.realiseTransaction( customerService.getCustomerFromToken(base64Token),
           transaction.getFromIban(), transaction.getToIban(), transaction.getAmount(), currency);
     } catch (IOException | NoSuchMethodException e) {
       throw new TransactionErrorException(e.getMessage());
@@ -93,5 +97,15 @@ public class HomeController {
       return ResponseEntity.ok().body(newTransaction);
     }
     return ResponseEntity.badRequest().body(newTransaction);
+  }
+
+  @RequestMapping(value = "/movements", method = GET)
+  public ResponseEntity<TransactionsDto> getCustomerTransactions(
+      @RequestHeader(name = "Authorization") String token) {
+
+    String base64Token = token.replace(token.substring(0, 7), "");
+    Customer customer = customerService.getCustomerFromToken(base64Token);
+
+    return ResponseEntity.ok().body(new TransactionsDto(customer.getTransactions()));
   }
 }

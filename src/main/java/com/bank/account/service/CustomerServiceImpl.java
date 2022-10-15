@@ -12,6 +12,7 @@ import com.bank.account.model.dto.LoginRequestDto;
 import com.bank.account.model.dto.RegistrationRequestDto;
 import com.bank.account.model.entity.Account;
 import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.Transaction;
 import com.bank.account.model.entity.VerificationToken;
 import com.bank.account.repository.AccountRepository;
 import com.bank.account.repository.CustomerRepository;
@@ -21,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -185,5 +187,10 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public void saveCustomer(Customer customer) {
     customerRepository.save(customer);
+  }
+
+  @Override
+  public List<Transaction> getTransactions(Customer customer) {
+    return customer.getTransactions();
   }
 }

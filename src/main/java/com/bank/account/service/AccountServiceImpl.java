@@ -46,7 +46,8 @@ public class AccountServiceImpl implements AccountService {
   }
 
   @Override
-  public Transaction realiseTransaction(String fromIban, String toIban, BigDecimal amount,
+  public Transaction realiseTransaction(Customer customer, String fromIban,
+      String toIban, BigDecimal amount,
       String currency) throws IOException, NoSuchMethodException {
 
     Account fromAccount = accountRepository.getAccountByIban(fromIban);
@@ -58,17 +59,24 @@ public class AccountServiceImpl implements AccountService {
     if (fromAccount != null && toAccount != null) {
       fromAccount.setBalance(fromAccount.getBalance().subtract(amountInEur));
       toAccount.setBalance(toAccount.getBalance().add(amountInEur));
+      Transaction transaction =
+          new Transaction(customer, fromIban, toIban, amount, "Realised");
+      customer.addTransaction(transaction);
+      customerRepository.save(customer);
       accountRepository.save(fromAccount);
       accountRepository.save(toAccount);
-      Transaction transaction = new Transaction(fromIban, toIban, amount, "Realised");
+
       transaction.setCurrency(currency.toUpperCase());
       transactionRepository.save(transaction);
 
       return transaction;
     }
-    Transaction transaction = new Transaction(fromIban, toIban, amount, "Not realised");
+    Transaction transaction =
+        new Transaction(customer, fromIban, toIban, amount, "Not realised");
     transaction.setCurrency(currency.toUpperCase());
+    customer.addTransaction(transaction);
     transactionRepository.save(transaction);
+    customerRepository.save(customer);
 
     return transaction;
   }

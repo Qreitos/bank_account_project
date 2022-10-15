@@ -9,6 +9,7 @@ public interface AccountService {
 
   void createAccount(Customer customer, String accountType);
 
-  Transaction realiseTransaction(String fromIban, String toIban, BigDecimal amount, String currency)
+  Transaction realiseTransaction(Customer customer, String fromIban, String toIban,
+      BigDecimal amount, String currency)
       throws IOException, NoSuchMethodException;
 }

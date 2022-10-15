@@ -4,7 +4,9 @@ import com.bank.account.model.dto.CustomerResponseDto;
 import com.bank.account.model.dto.LoginRequestDto;
 import com.bank.account.model.dto.RegistrationRequestDto;
 import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.Transaction;
 import com.bank.account.model.entity.VerificationToken;
+import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface CustomerService {
@@ -30,4 +32,6 @@ public interface CustomerService {
   void createVerificationToken(Customer customer, String token);
 
   void saveCustomer(Customer customer);
+
+  List<Transaction> getTransactions(Customer customer);
 }
