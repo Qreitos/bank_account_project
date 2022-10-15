@@ -4,8 +4,6 @@
 
 Bank Account rest API  
 
-[![Build and Tests](https://github.com/Qreitos/bank_account_project/actions/workflows/builds_and_tests.yml/badge.svg?branch=main)](https://github.com/Qreitos/bank_account_project/actions/workflows/builds_and_tests.yml)
-
 [INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
 With this API you can register new users create different types of accounts and transfer money from one to another.  
