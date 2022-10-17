@@ -125,3 +125,30 @@ All transactions (realised or not realised) are stored and accessible from datab
     "status": "Realised"
 }
 ```
+
+GET Accounts movements endpoint ("api/movements")  
+Endpoint will return response with customers movements.
+```json
+{
+    "transactions": [
+        {
+            "id": 1,
+            "fromIban": "SK45 0120 0000 0031 8920 6398",
+            "toIban": "SK45 0120 0000 0050 8578 8292",
+            "amount": 120.00,
+            "currency": "CZK",
+            "realisationDate": "2022-10-17T18:35:50+02:00",
+            "status": "Realised"
+        },
+        {
+            "id": 2,
+            "fromIban": "SK45 0120 0000 0031 8920 6398",
+            "toIban": "SK45 0120 0000 0050 8578 8292",
+            "amount": 1200.00,
+            "currency": "HUF",
+            "realisationDate": "2022-10-17T18:36:03+02:00",
+            "status": "Not realised"
+        }
+    ]
+}
+```
