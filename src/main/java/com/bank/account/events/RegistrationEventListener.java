@@ -29,7 +29,7 @@ public class RegistrationEventListener implements ApplicationListener<OnRegistra
     String subject = "Registration confirmation";
 
     SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setFrom("bank.verification@azet.sk");
+    mailMessage.setFrom("bank.account@azet.sk");
     mailMessage.setTo(recipientAddress);
     mailMessage.setSubject(subject);
     mailMessage.setText(

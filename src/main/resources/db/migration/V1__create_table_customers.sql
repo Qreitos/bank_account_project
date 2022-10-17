@@ -9,4 +9,4 @@ create table customers
     password     varchar(255),
     sur_name     varchar(255),
     primary key (customer_id)
-) engine = MyISAM
+) engine=MyISAM

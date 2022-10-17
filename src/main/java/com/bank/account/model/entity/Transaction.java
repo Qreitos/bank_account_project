@@ -3,6 +3,7 @@ package com.bank.account.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +33,8 @@ public class Transaction {
   private ZonedDateTime realisationDate;
   private String status;
   @JsonIgnore
-  @ManyToMany
-  private List<Customer> customers;
+  @ManyToOne
+  private Customer customer;
 
   public Transaction(Customer customer, String fromIban, String toIban,
       BigDecimal amount, String status) {
@@ -42,6 +43,6 @@ public class Transaction {
     this.amount = amount;
     this.realisationDate = ZonedDateTime.now();
     this.status = status;
-    customers.add(customer);
+    this.customer = customer;
   }
 }
