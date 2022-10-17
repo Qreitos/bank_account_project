@@ -39,7 +39,7 @@ public class Customer {
   @ManyToMany(fetch = FetchType.EAGER)
   private List<Role> roles;
   @JsonIgnore
-  @ManyToMany(mappedBy = "customer", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+  @ManyToMany
   private List<Transaction> transactions;
 
   public void addAccount(Account account) {
