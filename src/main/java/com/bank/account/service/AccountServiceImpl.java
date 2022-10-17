@@ -56,6 +56,8 @@ public class AccountServiceImpl implements AccountService {
     BigDecimal currencyRate = retrofitService.getCurrency(currency);
     BigDecimal amountInEur = amount.divide(currencyRate, RoundingMode.HALF_EVEN);
 
+    log.info("Creating transaction");
+
     if (fromAccount != null && toAccount != null) {
       fromAccount.setBalance(fromAccount.getBalance().subtract(amountInEur));
       toAccount.setBalance(toAccount.getBalance().add(amountInEur));
@@ -69,6 +71,7 @@ public class AccountServiceImpl implements AccountService {
       transaction.setCurrency(currency.toUpperCase());
       transactionRepository.save(transaction);
 
+      log.info("Transaction realised");
       return transaction;
     }
     Transaction transaction =
@@ -78,6 +81,7 @@ public class AccountServiceImpl implements AccountService {
     transactionRepository.save(transaction);
     customerRepository.save(customer);
 
+    log.info("Transaction not realised");
     return transaction;
   }
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -12,10 +14,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Service
+@Slf4j
 public class RetrofitService {
 
   public BigDecimal getCurrency(String currency) throws IOException, NoSuchMethodException {
-
+    log.info("Requesting currency rates from API");
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/")
         .addConverterFactory(GsonConverterFactory.create())

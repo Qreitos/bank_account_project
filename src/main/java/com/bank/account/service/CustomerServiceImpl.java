@@ -168,6 +168,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer getCustomerByVerificationToken(String verificationToken) {
+    log.info("Finding customer via token");
     return tokenRepository
         .findVerificationTokenByToken(verificationToken)
         .getCustomer();
@@ -175,22 +176,26 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public VerificationToken getVerificationToken(String verificationToken) {
+    log.info("Getting token");
     return tokenRepository.findVerificationTokenByToken(verificationToken);
   }
 
   @Override
   public void createVerificationToken(Customer customer, String token) {
+    log.info("Creating verification token");
     VerificationToken verificationToken = new VerificationToken(token, customer);
     tokenRepository.save(verificationToken);
   }
 
   @Override
   public void saveCustomer(Customer customer) {
+    log.info("Saving customer");
     customerRepository.save(customer);
   }
 
   @Override
   public List<Transaction> getTransactions(Customer customer) {
+    log.info("Getting customer transactions");
     return customer.getTransactions();
   }
 }
