@@ -7,7 +7,7 @@ Bank Account rest API
 [INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
 With this API you can register new users create different types of accounts and transfer money from one to another.  
-Application is using Spring boot, JWT Authorization, Email verification, Retrofit, Flyway and MySQL.
+Technology used: Spring boot, JWT Authorization, Email verification, Retrofit, Flyway and MySQL.
 
 POST registration endpoint ("/api/register")
 
@@ -33,7 +33,7 @@ Email verification
 
 ```java
 SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setFrom("bank.verification@azet.sk");
+    mailMessage.setFrom("bank.account@azet.sk");
     mailMessage.setTo(recipientAddress);
     mailMessage.setSubject(subject);
     mailMessage.setText(
