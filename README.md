@@ -140,7 +140,7 @@ Endpoint will return response with customers movements.
             "id": 2,
             "fromIban": "SK45 0120 0000 0031 8920 6398",
             "toIban": "SK45 0120 0000 0050 8578 8292",
-            "amount": 1200.00,
+            "amount": 1997.84,
             "currency": "HUF",
             "realisationDate": "2022-10-17T18:36:03+02:00",
             "status": "Not realised"
