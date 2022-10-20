@@ -7,7 +7,7 @@ Bank Account rest API
 [INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
 With this API you can register new users create different types of accounts and transfer money from one to another.  
-Application is using Spring boot, JWT Authorization, Email verification, Retrofit, Flyway and MySQL.
+Technology used: Spring boot, JWT Authorization, Email verification, Retrofit, Flyway and MySQL.
 
 POST registration endpoint ("/api/register")
 
@@ -33,7 +33,7 @@ Email verification
 
 ```java
 SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setFrom("bank.verification@azet.sk");
+    mailMessage.setFrom("bank.account@azet.sk");
     mailMessage.setTo(recipientAddress);
     mailMessage.setSubject(subject);
     mailMessage.setText(
@@ -114,16 +114,12 @@ With this endpoint it is possible to transfer amounts of money to another accoun
 You can make transactions in available currencies and API will convert them from base currency (EUR).  
 All transactions (realised or not realised) are stored and accessible from database.
 
-```json
-{
-    "id": 2,
-    "fromIban": "SK45 0120 0000 0068 1001 7666",
-    "toIban": "SK45 0120 0000 0093 3853 0329",
-    "amount": 155.00,
-    "currency": "CZK",
-    "realisationDate": "2022-10-13T12:33:12.749928519+02:00",
-    "status": "Realised"
-}
+```java
+  @RequestMapping(value = "/transaction", method = POST)
+  public ResponseEntity<Transaction> realiseTransaction(
+      @RequestHeader(name = "Authorization") String token,
+      @RequestParam(name = "currency") String currency,
+      @RequestBody Transaction transaction)
 ```
 
 GET Accounts movements endpoint ("api/movements")  
