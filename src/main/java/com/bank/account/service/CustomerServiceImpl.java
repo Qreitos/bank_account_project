@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -43,6 +44,12 @@ public class CustomerServiceImpl implements CustomerService {
   private final CustomerRepository customerRepository;
   private final AccountRepository accountRepository;
   private final VerificationTokenRepository tokenRepository;
+  private final BCryptPasswordEncoder encoder;
+
+  @Override
+  public boolean passwordCorrect(String rawPassword, String encodedPassword) {
+    return encoder.matches(rawPassword, encodedPassword);
+  }
 
   @Override
   public CustomerResponseDto transferCustomerToDto(Customer customer) {
@@ -87,7 +94,7 @@ public class CustomerServiceImpl implements CustomerService {
     newCustomer.setLoginNumber(newLoginNumber);
     newCustomer.setForName(registrationDto.getForName());
     newCustomer.setSurName(registrationDto.getSurName());
-    newCustomer.setPassword(registrationDto.getPassword());
+    newCustomer.setPassword(encoder.encode(registrationDto.getPassword()));
     newCustomer.setBirthDate(registrationDto.getBirthDate());
     newCustomer.setEmail(registrationDto.getEmail());
 
@@ -107,8 +114,8 @@ public class CustomerServiceImpl implements CustomerService {
       log.info("Login failed: loginNumber");
       return "number=fail";
     }
-    if (!customerRepository.findCustomerByLoginNumber(customerLogin.getLoginNumber()).getPassword()
-        .equals(customerLogin.getPassword())) {
+    if (!passwordCorrect(customerRepository.findCustomerByLoginNumber(customerLogin.getLoginNumber()).getPassword(),
+        customerLogin.getPassword())) {
       log.info("Login failed: password");
       return "password=fail";
     }

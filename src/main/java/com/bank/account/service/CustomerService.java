@@ -23,7 +23,9 @@ public interface CustomerService {
 
   Customer getCustomerByLoginNumber(int loginNumber);
 
-  CustomerResponseDto transferCustomerToDto(Customer customer);
+    boolean passwordCorrect(String rawPassword, String encodedPassword);
+
+    CustomerResponseDto transferCustomerToDto(Customer customer);
 
   Customer getCustomerByVerificationToken(String verificationToken);
 
