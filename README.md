@@ -13,7 +13,7 @@
 [INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
 
 Bank Account rest API  
-With this API you can register new users create different types of accounts and transfer money from one to another.  
+With this API you can register new users create different types of accounts and transfer money from one to another with real time currency rates.
 
 POST registration endpoint ("/api/register")
 
