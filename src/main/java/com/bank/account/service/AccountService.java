@@ -4,6 +4,7 @@ import com.bank.account.model.entity.Customer;
 import com.bank.account.model.entity.Transaction;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.springframework.stereotype.Service;
 
 public interface AccountService {
 

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CustomAuthorizationFilterTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CustomAuthorizationFilterTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.bank.account.security.html">com.bank.account.security</a> &gt; CustomAuthorizationFilterTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.742s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">custom_filter_test()</td>
+<td class="success">1.742s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-10-27 17:51:16.946  INFO 22830 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bank.account.security.CustomAuthorizationFilterTest], using SpringBootContextLoader
+2022-10-27 17:51:16.947  INFO 22830 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.bank.account.security.CustomAuthorizationFilterTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-10-27 17:51:16.947  INFO 22830 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bank.account.security.CustomAuthorizationFilterTest]: CustomAuthorizationFilterTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-10-27 17:51:16.952  INFO 22830 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bank.account.BankApplication for test class com.bank.account.security.CustomAuthorizationFilterTest
+2022-10-27 17:51:16.954  INFO 22830 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-10-27 17:51:16.956  INFO 22830 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@49f9e6e0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@660a45d1, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3ec2b20c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@24056fc1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@22cd4347, org.springframework.test.context.support.DirtiesContextTestExecutionListener@165dae02, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3da43c17, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@32d02705, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@7a4f8d63, org.springframework.test.context.event.EventPublishingTestExecutionListener@1191196, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@1d41d126, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2e1a3584, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@283891b1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6164b081, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@72bf956a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@d7638ac, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@61af95aa]
+2022-10-27 17:51:16.963  INFO 22830 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-27 17:51:16.964  INFO 22830 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-27 17:51:16.966  INFO 22830 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-10-27 17:51:16.992  INFO 22830 --- [    Test worker] c.b.a.s.CustomAuthorizationFilterTest    : Starting CustomAuthorizationFilterTest using Java 16.0.2 on peter-B250-FinTech with PID 22830 (started by peter in /home/peter/Documents/Greenfox/bank_account_project)
+2022-10-27 17:51:16.992  INFO 22830 --- [    Test worker] c.b.a.s.CustomAuthorizationFilterTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-10-27 17:51:17.127  INFO 22830 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-27 17:51:17.140  INFO 22830 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 5 JPA repository interfaces.
+2022-10-27 17:51:17.281  INFO 22830 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2022-10-27 17:51:17.297  INFO 22830 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2022-10-27 17:51:17.298  INFO 22830 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost/bank (MySQL 8.0)
+2022-10-27 17:51:17.307  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-10-27 17:51:17.369  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema `bank` (execution time 00:00.061s)
+2022-10-27 17:51:17.376  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema `bank` (execution time 00:00.006s)
+2022-10-27 17:51:17.377  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-10-27 17:51:17.385  INFO 22830 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table `bank`.`flyway_schema_history` not necessary as table doesn't exist.
+2022-10-27 17:51:17.390  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table `bank`.`flyway_schema_history` (execution time 00:00.007s).
+2022-10-27 17:51:17.405  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.005s)
+2022-10-27 17:51:17.417  INFO 22830 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `bank`.`flyway_schema_history` ...
+2022-10-27 17:51:17.463  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema `bank`: &lt;&lt; Empty Schema &gt;&gt;
+2022-10-27 17:51:17.467  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;0 - create table accounts&quot;
+2022-10-27 17:51:17.498  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;1 - create table customers&quot;
+2022-10-27 17:51:17.530  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;2 - create table cusromers roles&quot;
+2022-10-27 17:51:17.562  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;3 - create table role&quot;
+2022-10-27 17:51:17.588  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;4 - create table transactions&quot;
+2022-10-27 17:51:17.620  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;5 - insert into role table&quot;
+2022-10-27 17:51:17.647  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;6 - create table tokens&quot;
+2022-10-27 17:51:17.674  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema `bank` to version &quot;7 - create table customers transactions&quot;
+2022-10-27 17:51:17.700  INFO 22830 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema `bank`, now at version v7 (execution time 00:00.240s)
+2022-10-27 17:51:17.749  INFO 22830 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-27 17:51:17.754  INFO 22830 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-10-27 17:51:17.847  INFO 22830 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-27 17:51:17.847  INFO 22830 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-27 17:51:18.040  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6f42ddc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a7c508c, org.springframework.security.web.context.SecurityContextPersistenceFilter@9971cfe, org.springframework.security.web.header.HeaderWriterFilter@718e614b, org.springframework.security.web.authentication.logout.LogoutFilter@5d8d5d3c, com.bank.account.security.CustomAuthorizationFilter@60df0010, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2bee0998, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2968a197, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@570cd58a, org.springframework.security.web.session.SessionManagementFilter@28ada984, org.springframework.security.web.access.ExceptionTranslationFilter@3a63070b]
+2022-10-27 17:51:18.043  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.043  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-10-27 17:51:18.043  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.043  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-10-27 17:51:18.043  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.043  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-10-27 17:51:18.044  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.044  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-10-27 17:51:18.044  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.044  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-10-27 17:51:18.044  WARN 22830 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-10-27 17:51:18.044  INFO 22830 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-10-27 17:51:18.118  WARN 22830 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-27 17:51:18.382  INFO 22830 --- [    Test worker] c.b.a.s.CustomAuthorizationFilterTest    : Started CustomAuthorizationFilterTest in 1.413 seconds (JVM running for 57.297)
+2022-10-27 17:51:18.387  INFO 22830 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Saving customer
+Hibernate: 
+    insert 
+    into
+        customers
+        (birth_date, email, enabled, for_name, login_number, password, sur_name) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2022-10-27 17:51:18.399  INFO 22830 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Loading customer
+Hibernate: 
+    select
+        customer0_.customer_id as customer1_1_,
+        customer0_.birth_date as birth_da2_1_,
+        customer0_.email as email3_1_,
+        customer0_.enabled as enabled4_1_,
+        customer0_.for_name as for_name5_1_,
+        customer0_.login_number as login_nu6_1_,
+        customer0_.password as password7_1_,
+        customer0_.sur_name as sur_name8_1_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.login_number=?
+Hibernate: 
+    select
+        roles0_.customer_customer_id as customer1_2_0_,
+        roles0_.roles_id as roles_id2_2_0_,
+        role1_.id as id1_3_1_,
+        role1_.name as name2_3_1_ 
+    from
+        customers_roles roles0_ 
+    inner join
+        role role1_ 
+            on roles0_.roles_id=role1_.id 
+    where
+        roles0_.customer_customer_id=?
+2022-10-27 17:51:18.411  INFO 22830 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating JWT
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5</a> at Oct 27, 2022, 5:51:30 PM</p>
+</div>
+</div>
+</body>
+</html>

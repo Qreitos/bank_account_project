@@ -2,6 +2,7 @@ package com.bank.account.model.entity;
 
 import com.bank.account.model.dto.TransactionsDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,12 +36,12 @@ public class Customer {
   @JsonIgnore
   private boolean enabled = false;
   @OneToMany(mappedBy = "customer", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-  private List<Account> accounts;
+  private List<Account> accounts = new ArrayList<>();
   @ManyToMany(fetch = FetchType.EAGER)
-  private List<Role> roles;
+  private List<Role> roles = new ArrayList<>();
   @JsonIgnore
   @OneToMany(mappedBy = "customer", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-  private List<Transaction> transactions;
+  private List<Transaction> transactions = new ArrayList<>();
 
   public void addAccount(Account account) {
     accounts.add(account);

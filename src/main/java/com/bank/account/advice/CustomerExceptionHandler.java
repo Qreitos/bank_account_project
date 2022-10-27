@@ -1,5 +1,6 @@
 package com.bank.account.advice;
 
+import com.bank.account.exception.InvalidConfirmationTokenException;
 import com.bank.account.exception.LoginErrorException;
 import com.bank.account.exception.RegistrationErrorException;
 import com.bank.account.model.dto.ErrorResponseDto;
@@ -36,6 +37,17 @@ public class CustomerExceptionHandler {
         new ErrorResponseDto(environment.getProperty("config.errors.register_error"
             + " " + e.getMessage()),
             HttpStatus.NOT_FOUND,
+            ZonedDateTime.now());
+  }
+
+  @ExceptionHandler(InvalidConfirmationTokenException.class)
+  @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE)
+  public ErrorResponseDto handleInvalidConfirmationTokenException(
+      InvalidConfirmationTokenException e) {
+    return
+        new ErrorResponseDto(environment.getProperty("config.errors.invalid_confirmation_error"
+            + " " + e.getMessage()),
+            HttpStatus.NOT_ACCEPTABLE,
             ZonedDateTime.now());
   }
 }

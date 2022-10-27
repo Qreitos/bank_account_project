@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bank</a> &gt; <a href="index.source.html" class="el_package">com.bank.account.service</a> &gt; <span class="el_source">CustomerServiceImpl.java</span></div><h1>CustomerServiceImpl.java</h1><pre class="source lang-java linenums">package com.bank.account.service;
+
+import static com.bank.account.security.SecurityConfig.TOKEN_EXPIRATION_TIME;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.bank.account.enums.AccountType;
+import com.bank.account.model.dto.CustomerResponseDto;
+import com.bank.account.model.dto.LoginRequestDto;
+import com.bank.account.model.dto.RegistrationRequestDto;
+import com.bank.account.model.entity.Account;
+import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.Transaction;
+import com.bank.account.model.entity.VerificationToken;
+import com.bank.account.repository.AccountRepository;
+import com.bank.account.repository.CustomerRepository;
+import com.bank.account.repository.VerificationTokenRepository;
+import io.github.cdimascio.dotenv.Dotenv;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
+import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+@Service
+<span class="fc" id="L40">@RequiredArgsConstructor</span>
+<span class="fc" id="L41">@Slf4j</span>
+public class CustomerServiceImpl implements CustomerService {
+
+  private final CustomerRepository customerRepository;
+  private final AccountRepository accountRepository;
+  private final VerificationTokenRepository tokenRepository;
+  private final BCryptPasswordEncoder encoder;
+
+  @Override
+  public boolean passwordCorrect(String rawPassword, String encodedPassword) {
+<span class="fc" id="L51">    return encoder.matches(rawPassword, encodedPassword);</span>
+  }
+
+  @Override
+  public CustomerResponseDto transferCustomerToDto(Customer customer) {
+<span class="nc" id="L56">    log.info(&quot;Creating response DTO&quot;);</span>
+
+<span class="nc" id="L58">    return new CustomerResponseDto(customer.getCustomerId(), customer.getForName(),</span>
+<span class="nc" id="L59">        customer.getSurName(), customer.getBirthDate(), customer.getAccounts());</span>
+  }
+
+  @Override
+  public Customer getCustomerFromToken(String token) {
+<span class="fc" id="L64">    log.info(&quot;Decoding token&quot;);</span>
+
+<span class="fc" id="L66">    Dotenv dotenv = Dotenv.load();</span>
+<span class="fc" id="L67">    Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
+<span class="fc" id="L68">        .getBytes(StandardCharsets.UTF_8));</span>
+
+<span class="fc" id="L70">    JWTVerifier verifier = JWT.require(algorithm).build();</span>
+
+<span class="fc" id="L72">    DecodedJWT decodedJWT = verifier.verify(token);</span>
+
+<span class="fc" id="L74">    log.info(&quot;Checking JWT payload&quot;);</span>
+<span class="fc" id="L75">    String loginNumber = decodedJWT.getSubject();</span>
+<span class="fc" id="L76">    int logNumber = Integer.parseInt(loginNumber);</span>
+
+<span class="fc" id="L78">    return getCustomerByLoginNumber(logNumber);</span>
+  }
+
+  @Override
+  @Transactional
+  public Integer createAndSaveNewCustomer(RegistrationRequestDto registrationDto) {
+<span class="fc" id="L84">    log.info(&quot;Creating new customer&quot;);</span>
+
+<span class="fc" id="L86">    Random random = new Random();</span>
+    int newLoginNumber;
+
+    do {
+<span class="fc" id="L90">      newLoginNumber = random.nextInt(100000) + 10001;</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">    } while (customerRepository.findCustomerByLoginNumber(newLoginNumber) != null);</span>
+
+<span class="fc" id="L93">    Customer newCustomer = new Customer();</span>
+<span class="fc" id="L94">    newCustomer.setLoginNumber(newLoginNumber);</span>
+<span class="fc" id="L95">    newCustomer.setForName(registrationDto.getForName());</span>
+<span class="fc" id="L96">    newCustomer.setSurName(registrationDto.getSurName());</span>
+<span class="fc" id="L97">    newCustomer.setPassword(encoder.encode(registrationDto.getPassword()));</span>
+<span class="fc" id="L98">    newCustomer.setBirthDate(registrationDto.getBirthDate());</span>
+<span class="fc" id="L99">    newCustomer.setEmail(registrationDto.getEmail());</span>
+
+<span class="fc" id="L101">    log.info(&quot;Creating new account&quot;);</span>
+<span class="fc" id="L102">    Account newAccount = new Account(newCustomer);</span>
+<span class="fc" id="L103">    newAccount.setAccountType(AccountType.CLASSIC);</span>
+
+<span class="fc" id="L105">    accountRepository.save(newAccount);</span>
+<span class="fc" id="L106">    customerRepository.save(newCustomer);</span>
+<span class="fc" id="L107">    return newLoginNumber;</span>
+  }
+
+  @Override
+  public String authentication(LoginRequestDto loginRequestDto) {
+
+<span class="fc bfc" id="L113" title="All 2 branches covered.">    if (customerRepository.findCustomerByLoginNumber(loginRequestDto.getLoginNumber()) == null) {</span>
+<span class="fc" id="L114">      log.info(&quot;Login failed: loginNumber&quot;);</span>
+<span class="fc" id="L115">      return &quot;number=fail&quot;;</span>
+    }
+<span class="fc" id="L117">    String requestPassword = loginRequestDto.getPassword();</span>
+<span class="fc" id="L118">    String storedPassword = customerRepository</span>
+<span class="fc" id="L119">        .findCustomerByLoginNumber(loginRequestDto.getLoginNumber()).getPassword();</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">    if (!passwordCorrect(requestPassword, storedPassword)) {</span>
+<span class="fc" id="L121">      log.info(&quot;Login failed: password&quot;);</span>
+<span class="fc" id="L122">      return &quot;password=fail&quot;;</span>
+    }
+<span class="nc" id="L124">    return &quot;ok&quot;;</span>
+  }
+
+  @Override
+  public UserDetails loadUserByLoginNumber(int loginNumber) {
+<span class="fc" id="L129">    log.info(&quot;Loading customer&quot;);</span>
+
+<span class="fc" id="L131">    Customer customer = customerRepository.findCustomerByLoginNumber(loginNumber);</span>
+<span class="fc" id="L132">    String logNumber = String.valueOf(loginNumber);</span>
+
+<span class="fc" id="L134">    Collection&lt;SimpleGrantedAuthority&gt; authorities = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L135">    customer.getRoles().forEach(role -&gt; authorities.add(</span>
+<span class="nc" id="L136">        new SimpleGrantedAuthority(role.getName())));</span>
+
+<span class="fc" id="L138">    return new org.springframework.security.core.userdetails.User(</span>
+<span class="fc" id="L139">        logNumber, customer.getPassword(), authorities);</span>
+  }
+
+  @Override
+  public String getToken(UserDetails loggingUser) {
+<span class="fc" id="L144">    log.info(&quot;Creating JWT&quot;);</span>
+
+<span class="fc" id="L146">    Dotenv dotenv = Dotenv.load();</span>
+
+<span class="fc" id="L148">    Algorithm algorithm = // setting up new algorithm for signing token</span>
+<span class="fc" id="L149">        Algorithm.HMAC256(</span>
+<span class="fc" id="L150">            Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
+<span class="fc" id="L151">                .getBytes(StandardCharsets.UTF_8)); // loading JWT_SECRET_KEY from .env</span>
+
+<span class="fc" id="L153">    return JWT.create() // creating new JWT</span>
+<span class="fc" id="L154">        .withSubject(loggingUser.getUsername()) // saving username into JWT</span>
+<span class="fc" id="L155">        .withExpiresAt(</span>
+            new Date(
+<span class="fc" id="L157">                System.currentTimeMillis()</span>
+                    + TOKEN_EXPIRATION_TIME)) // saving expiration time into JWT
+<span class="fc" id="L159">        .withIssuer(</span>
+<span class="fc" id="L160">            ServletUriComponentsBuilder.fromCurrentContextPath()</span>
+<span class="fc" id="L161">                .path(&quot;/api/loggingUser/login&quot;)</span>
+<span class="fc" id="L162">                .toString()) // saving url path into JWT</span>
+<span class="fc" id="L163">        .withClaim(</span>
+            &quot;roles&quot;,
+<span class="fc" id="L165">            loggingUser.getAuthorities().stream()</span>
+<span class="fc" id="L166">                .map(GrantedAuthority::getAuthority)</span>
+<span class="fc" id="L167">                .collect(Collectors.toList())) // saving roles of user into JWT</span>
+<span class="fc" id="L168">        .sign(algorithm); // signing JWT with algorithm from JWT_SECRET_KEY</span>
+  }
+
+  @Override
+  public Customer getCustomerByLoginNumber(int loginNumber) {
+<span class="fc" id="L173">    log.info(&quot;Finding customer in repository&quot;);</span>
+
+<span class="fc" id="L175">    return customerRepository.findCustomerByLoginNumber(loginNumber);</span>
+  }
+
+  @Override
+  public Customer getCustomerByVerificationToken(String verificationToken) {
+<span class="fc" id="L180">    log.info(&quot;Finding customer via token&quot;);</span>
+<span class="fc" id="L181">    return tokenRepository</span>
+<span class="fc" id="L182">        .findVerificationTokenByToken(verificationToken)</span>
+<span class="fc" id="L183">        .getCustomer();</span>
+  }
+
+  @Override
+  public VerificationToken getVerificationToken(String verificationToken) {
+<span class="fc" id="L188">    log.info(&quot;Getting token&quot;);</span>
+<span class="fc" id="L189">    return tokenRepository.findVerificationTokenByToken(verificationToken);</span>
+  }
+
+  @Override
+  public VerificationToken createVerificationToken(Customer customer, String token) {
+<span class="fc" id="L194">    log.info(&quot;Creating verification token&quot;);</span>
+<span class="fc" id="L195">    VerificationToken verificationToken = new VerificationToken(token, customer);</span>
+<span class="fc" id="L196">    tokenRepository.save(verificationToken);</span>
+<span class="fc" id="L197">    return verificationToken;</span>
+  }
+
+  @Override
+  public void saveCustomer(Customer customer) {
+<span class="fc" id="L202">    log.info(&quot;Saving customer&quot;);</span>
+<span class="fc" id="L203">    customerRepository.save(customer);</span>
+<span class="fc" id="L204">  }</span>
+
+  @Override
+  public List&lt;Transaction&gt; getTransactions(Customer customer) {
+<span class="nc" id="L208">    log.info(&quot;Getting customer transactions&quot;);</span>
+<span class="nc" id="L209">    return customer.getTransactions();</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

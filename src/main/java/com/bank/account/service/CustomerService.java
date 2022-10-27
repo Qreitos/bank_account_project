@@ -23,15 +23,15 @@ public interface CustomerService {
 
   Customer getCustomerByLoginNumber(int loginNumber);
 
-    boolean passwordCorrect(String rawPassword, String encodedPassword);
+  boolean passwordCorrect(String rawPassword, String encodedPassword);
 
-    CustomerResponseDto transferCustomerToDto(Customer customer);
+  CustomerResponseDto transferCustomerToDto(Customer customer);
 
   Customer getCustomerByVerificationToken(String verificationToken);
 
   VerificationToken getVerificationToken(String verificationToken);
 
-  void createVerificationToken(Customer customer, String token);
+  VerificationToken createVerificationToken(Customer customer, String token);
 
   void saveCustomer(Customer customer);
 

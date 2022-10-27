@@ -108,14 +108,16 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public String authentication(LoginRequestDto customerLogin) {
+  public String authentication(LoginRequestDto loginRequestDto) {
 
-    if (customerRepository.findCustomerByLoginNumber(customerLogin.getLoginNumber()) == null) {
+    if (customerRepository.findCustomerByLoginNumber(loginRequestDto.getLoginNumber()) == null) {
       log.info("Login failed: loginNumber");
       return "number=fail";
     }
-    if (!passwordCorrect(customerRepository.findCustomerByLoginNumber(customerLogin.getLoginNumber()).getPassword(),
-        customerLogin.getPassword())) {
+    String requestPassword = loginRequestDto.getPassword();
+    String storedPassword = customerRepository
+        .findCustomerByLoginNumber(loginRequestDto.getLoginNumber()).getPassword();
+    if (!passwordCorrect(requestPassword, storedPassword)) {
       log.info("Login failed: password");
       return "password=fail";
     }
@@ -188,10 +190,11 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public void createVerificationToken(Customer customer, String token) {
+  public VerificationToken createVerificationToken(Customer customer, String token) {
     log.info("Creating verification token");
     VerificationToken verificationToken = new VerificationToken(token, customer);
     tokenRepository.save(verificationToken);
+    return verificationToken;
   }
 
   @Override

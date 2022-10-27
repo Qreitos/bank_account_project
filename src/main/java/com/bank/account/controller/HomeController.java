@@ -42,6 +42,10 @@ public class HomeController {
       @RequestHeader(name = "Authorization") String token,
       @RequestParam(name = "currency") String currency) {
 
+    if (token == null || currency == null) {
+      throw new LoginErrorException("Not provided required data");
+    }
+
     String base64Token = token.replace(token.substring(0, 7), "");
 
     CustomerResponseDto customerResponseDto = customerService.transferCustomerToDto(
