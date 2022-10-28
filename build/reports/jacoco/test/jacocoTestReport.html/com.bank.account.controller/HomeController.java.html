@@ -69,16 +69,16 @@ public class HomeController {
       @RequestParam(name = &quot;accountType&quot;) String accountType) {
 
     try {
-<span class="fc" id="L72">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
-<span class="fc" id="L73">      accountService.createAccount(customerService.getCustomerFromToken(base64Token),</span>
-<span class="fc" id="L74">          accountType.toUpperCase());</span>
+<span class="nc" id="L72">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="nc" id="L73">      accountService.createAccount(customerService.getCustomerFromToken(base64Token),</span>
+<span class="nc" id="L74">          accountType.toUpperCase());</span>
 <span class="nc" id="L75">    } catch (Exception e) {</span>
 <span class="nc" id="L76">      throw new CreateAccountErrorException(e.getMessage());</span>
-<span class="fc" id="L77">    }</span>
-<span class="fc" id="L78">    return ResponseEntity.ok().body(</span>
+<span class="nc" id="L77">    }</span>
+<span class="nc" id="L78">    return ResponseEntity.ok().body(</span>
         new AccountCreateResponseDto(&quot;Account created&quot;,
             HttpStatus.ACCEPTED,
-<span class="fc" id="L81">            ZonedDateTime.now()));</span>
+<span class="nc" id="L81">            ZonedDateTime.now()));</span>
   }
 
   @RequestMapping(value = &quot;/transaction&quot;, method = POST)
@@ -89,28 +89,28 @@ public class HomeController {
 
     Transaction newTransaction;
     try {
-<span class="fc" id="L92">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
-<span class="fc" id="L93">      newTransaction =</span>
-<span class="fc" id="L94">          accountService.realiseTransaction( customerService.getCustomerFromToken(base64Token),</span>
-<span class="fc" id="L95">          transaction.getFromIban(), transaction.getToIban(), transaction.getAmount(), currency);</span>
+<span class="nc" id="L92">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="nc" id="L93">      newTransaction =</span>
+<span class="nc" id="L94">          accountService.realiseTransaction( customerService.getCustomerFromToken(base64Token),</span>
+<span class="nc" id="L95">          transaction.getFromIban(), transaction.getToIban(), transaction.getAmount(), currency);</span>
 <span class="nc" id="L96">    } catch (IOException | NoSuchMethodException e) {</span>
 <span class="nc" id="L97">      throw new TransactionErrorException(e.getMessage());</span>
-<span class="fc" id="L98">    }</span>
+<span class="nc" id="L98">    }</span>
 
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">    if (newTransaction.getStatus().equals(&quot;Realised&quot;)) {</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">    if (newTransaction.getStatus().equals(&quot;Realised&quot;)) {</span>
 <span class="nc" id="L101">      return ResponseEntity.ok().body(newTransaction);</span>
     }
-<span class="fc" id="L103">    return ResponseEntity.badRequest().body(newTransaction);</span>
+<span class="nc" id="L103">    return ResponseEntity.badRequest().body(newTransaction);</span>
   }
 
   @RequestMapping(value = &quot;/movements&quot;, method = GET)
   public ResponseEntity&lt;TransactionsDto&gt; getCustomerTransactions(
       @RequestHeader(name = &quot;Authorization&quot;) String token) {
 
-<span class="fc" id="L110">    String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
-<span class="fc" id="L111">    Customer customer = customerService.getCustomerFromToken(base64Token);</span>
+<span class="nc" id="L110">    String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="nc" id="L111">    Customer customer = customerService.getCustomerFromToken(base64Token);</span>
 
-<span class="fc" id="L113">    return ResponseEntity.ok().body(new TransactionsDto(customer.getTransactions()));</span>
+<span class="nc" id="L113">    return ResponseEntity.ok().body(new TransactionsDto(customer.getTransactions()));</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

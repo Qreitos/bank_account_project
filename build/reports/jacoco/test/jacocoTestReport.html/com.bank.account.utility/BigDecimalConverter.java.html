@@ -11,12 +11,12 @@ import lombok.Data;
 public class BigDecimalConverter implements AttributeConverter&lt;BigDecimal, Long&gt; {
 
   public Long convertToDatabaseColumn(BigDecimal value) {
-<span class="pc bpc" id="L14" title="1 of 2 branches missed.">    return value == null ? null : value.multiply(BigDecimal.valueOf(100L)).longValue();</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">    return value == null ? null : value.multiply(BigDecimal.valueOf(100L)).longValue();</span>
   }
 
   public BigDecimal convertToEntityAttribute(Long value) {
-<span class="pc bpc" id="L18" title="1 of 2 branches missed.">    return value == null ? null</span>
-<span class="fc" id="L19">        : (new BigDecimal(value)).divide(BigDecimal.valueOf(100L), 1, RoundingMode.HALF_EVEN);</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">    return value == null ? null</span>
+<span class="nc" id="L19">        : (new BigDecimal(value)).divide(BigDecimal.valueOf(100L), 1, RoundingMode.HALF_EVEN);</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

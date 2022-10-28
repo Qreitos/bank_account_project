@@ -10,8 +10,12 @@ import com.bank.account.repository.TransactionRepository;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
+import java.util.Random;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -83,5 +87,57 @@ public class AccountServiceImpl implements AccountService {
 
     log.info("Transaction not realised");
     return transaction;
+  }
+
+  @Override
+  @Transactional
+  @Scheduled(fixedDelay = 10000, initialDelay = 10000)
+  public void savingAccountBalanceUpdate() {
+    try {
+      List<Account> accountList = accountRepository.findAll();
+      if (!accountList.isEmpty()) {
+        accountList.stream().filter(account -> account.getAccountType().equals(AccountType.SAVING))
+            .forEach(account -> {
+              account.setBalance(
+                  account.getBalance().multiply(BigDecimal.valueOf(1.02)));
+              accountRepository.save(account);
+            });
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  @Override
+  @Transactional
+  @Scheduled(fixedDelay = 10000, initialDelay = 10000)
+  public void investorAccountBalanceUpdate() {
+
+    Random random = new Random();
+    int earnChance = random.nextInt(5);
+    BigDecimal percentageRandom = BigDecimal.valueOf(random.nextInt(7));
+
+    try {
+      List<Account> accountList = accountRepository.findAll();
+      if (!accountList.isEmpty()) {
+        accountList.stream()
+            .filter(account -> account.getAccountType().equals(AccountType.INVESTOR))
+            .forEach(account -> {
+              if (earnChance == 0) {
+                account.setBalance(account.getBalance().subtract(
+                    account.getBalance().multiply(percentageRandom)
+                        .divide(BigDecimal.valueOf(100))));
+              }
+              if (earnChance > 0) {
+                account.setBalance(account.getBalance().add(
+                    account.getBalance().multiply(percentageRandom)
+                        .divide(BigDecimal.valueOf(100))));
+              }
+              accountRepository.save(account);
+            });
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
   }
 }

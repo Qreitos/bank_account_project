@@ -18,28 +18,28 @@ public class RegistrationEventListener implements ApplicationListener&lt;OnRegis
   private final JavaMailSender javaMailSender;
 
   public void onApplicationEvent(@NotNull OnRegistrationCompleteEvent event) {
-<span class="fc" id="L21">    this.confirmRegistration(event);</span>
-<span class="fc" id="L22">  }</span>
+<span class="nc" id="L21">    this.confirmRegistration(event);</span>
+<span class="nc" id="L22">  }</span>
 
   private void confirmRegistration(OnRegistrationCompleteEvent event) {
-<span class="fc" id="L25">    Customer customer = event.getCustomer();</span>
-<span class="fc" id="L26">    String token = UUID.randomUUID().toString();</span>
-<span class="fc" id="L27">    this.customerService.createVerificationToken(customer, token);</span>
-<span class="fc" id="L28">    String recipientAddress = customer.getEmail();</span>
-<span class="fc" id="L29">    String subject = &quot;Registration confirmation&quot;;</span>
+<span class="nc" id="L25">    Customer customer = event.getCustomer();</span>
+<span class="nc" id="L26">    String token = UUID.randomUUID().toString();</span>
+<span class="nc" id="L27">    this.customerService.createVerificationToken(customer, token);</span>
+<span class="nc" id="L28">    String recipientAddress = customer.getEmail();</span>
+<span class="nc" id="L29">    String subject = &quot;Registration confirmation&quot;;</span>
 
-<span class="fc" id="L31">    SimpleMailMessage mailMessage = new SimpleMailMessage();</span>
-<span class="fc" id="L32">    mailMessage.setFrom(&quot;bank.account@azet.sk&quot;);</span>
-<span class="fc" id="L33">    mailMessage.setTo(recipientAddress);</span>
-<span class="fc" id="L34">    mailMessage.setSubject(subject);</span>
-<span class="fc" id="L35">    mailMessage.setText(</span>
+<span class="nc" id="L31">    SimpleMailMessage mailMessage = new SimpleMailMessage();</span>
+<span class="nc" id="L32">    mailMessage.setFrom(&quot;bank.account@azet.sk&quot;);</span>
+<span class="nc" id="L33">    mailMessage.setTo(recipientAddress);</span>
+<span class="nc" id="L34">    mailMessage.setSubject(subject);</span>
+<span class="nc" id="L35">    mailMessage.setText(</span>
         &quot;Hello, &quot;
-<span class="fc" id="L37">            + customer.getForName()</span>
+<span class="nc" id="L37">            + customer.getForName()</span>
             + &quot;!\n\n Please use this token for confirmation of your account by POST method &quot;
             + &quot;(/api/verification?token=[your_token]&quot;
             + (&quot;\n\n&quot; + token + &quot;\n\nThank you and have a nice day. :)&quot;));
 
-<span class="fc" id="L42">    javaMailSender.send(mailMessage);</span>
-<span class="fc" id="L43">  }</span>
+<span class="nc" id="L42">    javaMailSender.send(mailMessage);</span>
+<span class="nc" id="L43">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

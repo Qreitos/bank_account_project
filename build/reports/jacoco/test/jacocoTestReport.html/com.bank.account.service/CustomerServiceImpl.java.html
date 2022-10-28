@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public boolean passwordCorrect(String rawPassword, String encodedPassword) {
-<span class="fc" id="L51">    return encoder.matches(rawPassword, encodedPassword);</span>
+<span class="nc" id="L51">    return encoder.matches(rawPassword, encodedPassword);</span>
   }
 
   @Override
@@ -61,147 +61,147 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer getCustomerFromToken(String token) {
-<span class="fc" id="L64">    log.info(&quot;Decoding token&quot;);</span>
+<span class="nc" id="L64">    log.info(&quot;Decoding token&quot;);</span>
 
-<span class="fc" id="L66">    Dotenv dotenv = Dotenv.load();</span>
-<span class="fc" id="L67">    Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
-<span class="fc" id="L68">        .getBytes(StandardCharsets.UTF_8));</span>
+<span class="nc" id="L66">    Dotenv dotenv = Dotenv.load();</span>
+<span class="nc" id="L67">    Algorithm algorithm = Algorithm.HMAC256(Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
+<span class="nc" id="L68">        .getBytes(StandardCharsets.UTF_8));</span>
 
-<span class="fc" id="L70">    JWTVerifier verifier = JWT.require(algorithm).build();</span>
+<span class="nc" id="L70">    JWTVerifier verifier = JWT.require(algorithm).build();</span>
 
-<span class="fc" id="L72">    DecodedJWT decodedJWT = verifier.verify(token);</span>
+<span class="nc" id="L72">    DecodedJWT decodedJWT = verifier.verify(token);</span>
 
-<span class="fc" id="L74">    log.info(&quot;Checking JWT payload&quot;);</span>
-<span class="fc" id="L75">    String loginNumber = decodedJWT.getSubject();</span>
-<span class="fc" id="L76">    int logNumber = Integer.parseInt(loginNumber);</span>
+<span class="nc" id="L74">    log.info(&quot;Checking JWT payload&quot;);</span>
+<span class="nc" id="L75">    String loginNumber = decodedJWT.getSubject();</span>
+<span class="nc" id="L76">    int logNumber = Integer.parseInt(loginNumber);</span>
 
-<span class="fc" id="L78">    return getCustomerByLoginNumber(logNumber);</span>
+<span class="nc" id="L78">    return getCustomerByLoginNumber(logNumber);</span>
   }
 
   @Override
   @Transactional
   public Integer createAndSaveNewCustomer(RegistrationRequestDto registrationDto) {
-<span class="fc" id="L84">    log.info(&quot;Creating new customer&quot;);</span>
+<span class="nc" id="L84">    log.info(&quot;Creating new customer&quot;);</span>
 
-<span class="fc" id="L86">    Random random = new Random();</span>
+<span class="nc" id="L86">    Random random = new Random();</span>
     int newLoginNumber;
 
     do {
-<span class="fc" id="L90">      newLoginNumber = random.nextInt(100000) + 10001;</span>
-<span class="pc bpc" id="L91" title="1 of 2 branches missed.">    } while (customerRepository.findCustomerByLoginNumber(newLoginNumber) != null);</span>
+<span class="nc" id="L90">      newLoginNumber = random.nextInt(100000) + 10001;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">    } while (customerRepository.findCustomerByLoginNumber(newLoginNumber) != null);</span>
 
-<span class="fc" id="L93">    Customer newCustomer = new Customer();</span>
-<span class="fc" id="L94">    newCustomer.setLoginNumber(newLoginNumber);</span>
-<span class="fc" id="L95">    newCustomer.setForName(registrationDto.getForName());</span>
-<span class="fc" id="L96">    newCustomer.setSurName(registrationDto.getSurName());</span>
-<span class="fc" id="L97">    newCustomer.setPassword(encoder.encode(registrationDto.getPassword()));</span>
-<span class="fc" id="L98">    newCustomer.setBirthDate(registrationDto.getBirthDate());</span>
-<span class="fc" id="L99">    newCustomer.setEmail(registrationDto.getEmail());</span>
+<span class="nc" id="L93">    Customer newCustomer = new Customer();</span>
+<span class="nc" id="L94">    newCustomer.setLoginNumber(newLoginNumber);</span>
+<span class="nc" id="L95">    newCustomer.setForName(registrationDto.getForName());</span>
+<span class="nc" id="L96">    newCustomer.setSurName(registrationDto.getSurName());</span>
+<span class="nc" id="L97">    newCustomer.setPassword(encoder.encode(registrationDto.getPassword()));</span>
+<span class="nc" id="L98">    newCustomer.setBirthDate(registrationDto.getBirthDate());</span>
+<span class="nc" id="L99">    newCustomer.setEmail(registrationDto.getEmail());</span>
 
-<span class="fc" id="L101">    log.info(&quot;Creating new account&quot;);</span>
-<span class="fc" id="L102">    Account newAccount = new Account(newCustomer);</span>
-<span class="fc" id="L103">    newAccount.setAccountType(AccountType.CLASSIC);</span>
+<span class="nc" id="L101">    log.info(&quot;Creating new account&quot;);</span>
+<span class="nc" id="L102">    Account newAccount = new Account(newCustomer);</span>
+<span class="nc" id="L103">    newAccount.setAccountType(AccountType.CLASSIC);</span>
 
-<span class="fc" id="L105">    accountRepository.save(newAccount);</span>
-<span class="fc" id="L106">    customerRepository.save(newCustomer);</span>
-<span class="fc" id="L107">    return newLoginNumber;</span>
+<span class="nc" id="L105">    accountRepository.save(newAccount);</span>
+<span class="nc" id="L106">    customerRepository.save(newCustomer);</span>
+<span class="nc" id="L107">    return newLoginNumber;</span>
   }
 
   @Override
   public String authentication(LoginRequestDto loginRequestDto) {
 
-<span class="fc bfc" id="L113" title="All 2 branches covered.">    if (customerRepository.findCustomerByLoginNumber(loginRequestDto.getLoginNumber()) == null) {</span>
-<span class="fc" id="L114">      log.info(&quot;Login failed: loginNumber&quot;);</span>
-<span class="fc" id="L115">      return &quot;number=fail&quot;;</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">    if (customerRepository.findCustomerByLoginNumber(loginRequestDto.getLoginNumber()) == null) {</span>
+<span class="nc" id="L114">      log.info(&quot;Login failed: loginNumber&quot;);</span>
+<span class="nc" id="L115">      return &quot;number=fail&quot;;</span>
     }
-<span class="fc" id="L117">    String requestPassword = loginRequestDto.getPassword();</span>
-<span class="fc" id="L118">    String storedPassword = customerRepository</span>
-<span class="fc" id="L119">        .findCustomerByLoginNumber(loginRequestDto.getLoginNumber()).getPassword();</span>
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">    if (!passwordCorrect(requestPassword, storedPassword)) {</span>
-<span class="fc" id="L121">      log.info(&quot;Login failed: password&quot;);</span>
-<span class="fc" id="L122">      return &quot;password=fail&quot;;</span>
+<span class="nc" id="L117">    String requestPassword = loginRequestDto.getPassword();</span>
+<span class="nc" id="L118">    String storedPassword = customerRepository</span>
+<span class="nc" id="L119">        .findCustomerByLoginNumber(loginRequestDto.getLoginNumber()).getPassword();</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">    if (!passwordCorrect(requestPassword, storedPassword)) {</span>
+<span class="nc" id="L121">      log.info(&quot;Login failed: password&quot;);</span>
+<span class="nc" id="L122">      return &quot;password=fail&quot;;</span>
     }
 <span class="nc" id="L124">    return &quot;ok&quot;;</span>
   }
 
   @Override
   public UserDetails loadUserByLoginNumber(int loginNumber) {
-<span class="fc" id="L129">    log.info(&quot;Loading customer&quot;);</span>
+<span class="nc" id="L129">    log.info(&quot;Loading customer&quot;);</span>
 
-<span class="fc" id="L131">    Customer customer = customerRepository.findCustomerByLoginNumber(loginNumber);</span>
-<span class="fc" id="L132">    String logNumber = String.valueOf(loginNumber);</span>
+<span class="nc" id="L131">    Customer customer = customerRepository.findCustomerByLoginNumber(loginNumber);</span>
+<span class="nc" id="L132">    String logNumber = String.valueOf(loginNumber);</span>
 
-<span class="fc" id="L134">    Collection&lt;SimpleGrantedAuthority&gt; authorities = new ArrayList&lt;&gt;();</span>
-<span class="pc" id="L135">    customer.getRoles().forEach(role -&gt; authorities.add(</span>
+<span class="nc" id="L134">    Collection&lt;SimpleGrantedAuthority&gt; authorities = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L135">    customer.getRoles().forEach(role -&gt; authorities.add(</span>
 <span class="nc" id="L136">        new SimpleGrantedAuthority(role.getName())));</span>
 
-<span class="fc" id="L138">    return new org.springframework.security.core.userdetails.User(</span>
-<span class="fc" id="L139">        logNumber, customer.getPassword(), authorities);</span>
+<span class="nc" id="L138">    return new org.springframework.security.core.userdetails.User(</span>
+<span class="nc" id="L139">        logNumber, customer.getPassword(), authorities);</span>
   }
 
   @Override
   public String getToken(UserDetails loggingUser) {
-<span class="fc" id="L144">    log.info(&quot;Creating JWT&quot;);</span>
+<span class="nc" id="L144">    log.info(&quot;Creating JWT&quot;);</span>
 
-<span class="fc" id="L146">    Dotenv dotenv = Dotenv.load();</span>
+<span class="nc" id="L146">    Dotenv dotenv = Dotenv.load();</span>
 
-<span class="fc" id="L148">    Algorithm algorithm = // setting up new algorithm for signing token</span>
-<span class="fc" id="L149">        Algorithm.HMAC256(</span>
-<span class="fc" id="L150">            Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
-<span class="fc" id="L151">                .getBytes(StandardCharsets.UTF_8)); // loading JWT_SECRET_KEY from .env</span>
+<span class="nc" id="L148">    Algorithm algorithm = // setting up new algorithm for signing token</span>
+<span class="nc" id="L149">        Algorithm.HMAC256(</span>
+<span class="nc" id="L150">            Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
+<span class="nc" id="L151">                .getBytes(StandardCharsets.UTF_8)); // loading JWT_SECRET_KEY from .env</span>
 
-<span class="fc" id="L153">    return JWT.create() // creating new JWT</span>
-<span class="fc" id="L154">        .withSubject(loggingUser.getUsername()) // saving username into JWT</span>
-<span class="fc" id="L155">        .withExpiresAt(</span>
+<span class="nc" id="L153">    return JWT.create() // creating new JWT</span>
+<span class="nc" id="L154">        .withSubject(loggingUser.getUsername()) // saving username into JWT</span>
+<span class="nc" id="L155">        .withExpiresAt(</span>
             new Date(
-<span class="fc" id="L157">                System.currentTimeMillis()</span>
+<span class="nc" id="L157">                System.currentTimeMillis()</span>
                     + TOKEN_EXPIRATION_TIME)) // saving expiration time into JWT
-<span class="fc" id="L159">        .withIssuer(</span>
-<span class="fc" id="L160">            ServletUriComponentsBuilder.fromCurrentContextPath()</span>
-<span class="fc" id="L161">                .path(&quot;/api/loggingUser/login&quot;)</span>
-<span class="fc" id="L162">                .toString()) // saving url path into JWT</span>
-<span class="fc" id="L163">        .withClaim(</span>
+<span class="nc" id="L159">        .withIssuer(</span>
+<span class="nc" id="L160">            ServletUriComponentsBuilder.fromCurrentContextPath()</span>
+<span class="nc" id="L161">                .path(&quot;/api/loggingUser/login&quot;)</span>
+<span class="nc" id="L162">                .toString()) // saving url path into JWT</span>
+<span class="nc" id="L163">        .withClaim(</span>
             &quot;roles&quot;,
-<span class="fc" id="L165">            loggingUser.getAuthorities().stream()</span>
-<span class="fc" id="L166">                .map(GrantedAuthority::getAuthority)</span>
-<span class="fc" id="L167">                .collect(Collectors.toList())) // saving roles of user into JWT</span>
-<span class="fc" id="L168">        .sign(algorithm); // signing JWT with algorithm from JWT_SECRET_KEY</span>
+<span class="nc" id="L165">            loggingUser.getAuthorities().stream()</span>
+<span class="nc" id="L166">                .map(GrantedAuthority::getAuthority)</span>
+<span class="nc" id="L167">                .collect(Collectors.toList())) // saving roles of user into JWT</span>
+<span class="nc" id="L168">        .sign(algorithm); // signing JWT with algorithm from JWT_SECRET_KEY</span>
   }
 
   @Override
   public Customer getCustomerByLoginNumber(int loginNumber) {
-<span class="fc" id="L173">    log.info(&quot;Finding customer in repository&quot;);</span>
+<span class="nc" id="L173">    log.info(&quot;Finding customer in repository&quot;);</span>
 
-<span class="fc" id="L175">    return customerRepository.findCustomerByLoginNumber(loginNumber);</span>
+<span class="nc" id="L175">    return customerRepository.findCustomerByLoginNumber(loginNumber);</span>
   }
 
   @Override
   public Customer getCustomerByVerificationToken(String verificationToken) {
-<span class="fc" id="L180">    log.info(&quot;Finding customer via token&quot;);</span>
-<span class="fc" id="L181">    return tokenRepository</span>
-<span class="fc" id="L182">        .findVerificationTokenByToken(verificationToken)</span>
-<span class="fc" id="L183">        .getCustomer();</span>
+<span class="nc" id="L180">    log.info(&quot;Finding customer via token&quot;);</span>
+<span class="nc" id="L181">    return tokenRepository</span>
+<span class="nc" id="L182">        .findVerificationTokenByToken(verificationToken)</span>
+<span class="nc" id="L183">        .getCustomer();</span>
   }
 
   @Override
   public VerificationToken getVerificationToken(String verificationToken) {
-<span class="fc" id="L188">    log.info(&quot;Getting token&quot;);</span>
-<span class="fc" id="L189">    return tokenRepository.findVerificationTokenByToken(verificationToken);</span>
+<span class="nc" id="L188">    log.info(&quot;Getting token&quot;);</span>
+<span class="nc" id="L189">    return tokenRepository.findVerificationTokenByToken(verificationToken);</span>
   }
 
   @Override
   public VerificationToken createVerificationToken(Customer customer, String token) {
-<span class="fc" id="L194">    log.info(&quot;Creating verification token&quot;);</span>
-<span class="fc" id="L195">    VerificationToken verificationToken = new VerificationToken(token, customer);</span>
-<span class="fc" id="L196">    tokenRepository.save(verificationToken);</span>
-<span class="fc" id="L197">    return verificationToken;</span>
+<span class="nc" id="L194">    log.info(&quot;Creating verification token&quot;);</span>
+<span class="nc" id="L195">    VerificationToken verificationToken = new VerificationToken(token, customer);</span>
+<span class="nc" id="L196">    tokenRepository.save(verificationToken);</span>
+<span class="nc" id="L197">    return verificationToken;</span>
   }
 
   @Override
   public void saveCustomer(Customer customer) {
-<span class="fc" id="L202">    log.info(&quot;Saving customer&quot;);</span>
-<span class="fc" id="L203">    customerRepository.save(customer);</span>
-<span class="fc" id="L204">  }</span>
+<span class="nc" id="L202">    log.info(&quot;Saving customer&quot;);</span>
+<span class="nc" id="L203">    customerRepository.save(customer);</span>
+<span class="nc" id="L204">  }</span>
 
   @Override
   public List&lt;Transaction&gt; getTransactions(Customer customer) {

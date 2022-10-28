@@ -21,22 +21,22 @@ public class AccountExceptionHandler {
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   public ErrorResponseDto handleCreateAccountException(CreateAccountErrorException e) {
 
-<span class="fc" id="L24">    return</span>
-<span class="fc" id="L25">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.create_account_error&quot;)</span>
-<span class="fc" id="L26">            + &quot; &quot; + e.getMessage(),</span>
+<span class="nc" id="L24">    return</span>
+<span class="nc" id="L25">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.create_account_error&quot;)</span>
+<span class="nc" id="L26">            + &quot; &quot; + e.getMessage(),</span>
             HttpStatus.INTERNAL_SERVER_ERROR,
-<span class="fc" id="L28">            ZonedDateTime.now());</span>
+<span class="nc" id="L28">            ZonedDateTime.now());</span>
   }
 
   @ExceptionHandler(TransactionErrorException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
   public ErrorResponseDto handleTransactionErrorException(TransactionErrorException e) {
 
-<span class="fc" id="L35">    return</span>
-<span class="fc" id="L36">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.transaction_error&quot;)</span>
-<span class="fc" id="L37">            + &quot; &quot; + e.getMessage(),</span>
+<span class="nc" id="L35">    return</span>
+<span class="nc" id="L36">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.transaction_error&quot;)</span>
+<span class="nc" id="L37">            + &quot; &quot; + e.getMessage(),</span>
             HttpStatus.INTERNAL_SERVER_ERROR,
-<span class="fc" id="L39">            ZonedDateTime.now());</span>
+<span class="nc" id="L39">            ZonedDateTime.now());</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

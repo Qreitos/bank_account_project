@@ -22,33 +22,33 @@ public class CustomerExceptionHandler {
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
   public ErrorResponseDto handleLoginException(LoginErrorException e) {
 
-<span class="fc" id="L25">    return</span>
-<span class="fc" id="L26">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.log_in_error&quot;</span>
-<span class="fc" id="L27">            + &quot; &quot; + e.getMessage()),</span>
+<span class="nc" id="L25">    return</span>
+<span class="nc" id="L26">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.log_in_error&quot;</span>
+<span class="nc" id="L27">            + &quot; &quot; + e.getMessage()),</span>
             HttpStatus.NOT_FOUND,
-<span class="fc" id="L29">            ZonedDateTime.now());</span>
+<span class="nc" id="L29">            ZonedDateTime.now());</span>
   }
 
   @ExceptionHandler(RegistrationErrorException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
   public ErrorResponseDto handleRegistrationException(RegistrationErrorException e) {
 
-<span class="fc" id="L36">    return</span>
-<span class="fc" id="L37">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.register_error&quot;</span>
-<span class="fc" id="L38">            + &quot; &quot; + e.getMessage()),</span>
+<span class="nc" id="L36">    return</span>
+<span class="nc" id="L37">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.register_error&quot;</span>
+<span class="nc" id="L38">            + &quot; &quot; + e.getMessage()),</span>
             HttpStatus.NOT_FOUND,
-<span class="fc" id="L40">            ZonedDateTime.now());</span>
+<span class="nc" id="L40">            ZonedDateTime.now());</span>
   }
 
   @ExceptionHandler(InvalidConfirmationTokenException.class)
   @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE)
   public ErrorResponseDto handleInvalidConfirmationTokenException(
       InvalidConfirmationTokenException e) {
-<span class="fc" id="L47">    return</span>
-<span class="fc" id="L48">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.invalid_confirmation_error&quot;</span>
-<span class="fc" id="L49">            + &quot; &quot; + e.getMessage()),</span>
+<span class="nc" id="L47">    return</span>
+<span class="nc" id="L48">        new ErrorResponseDto(environment.getProperty(&quot;config.errors.invalid_confirmation_error&quot;</span>
+<span class="nc" id="L49">            + &quot; &quot; + e.getMessage()),</span>
             HttpStatus.NOT_ACCEPTABLE,
-<span class="fc" id="L51">            ZonedDateTime.now());</span>
+<span class="nc" id="L51">            ZonedDateTime.now());</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -26,11 +26,11 @@ public class Transaction {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 <span class="fc" id="L28">  private long id;</span>
-<span class="fc" id="L29">  private String fromIban;</span>
-<span class="fc" id="L30">  private String toIban;</span>
-<span class="fc" id="L31">  private BigDecimal amount;</span>
-<span class="fc" id="L32">  private String currency;</span>
-<span class="fc" id="L33">  private ZonedDateTime realisationDate;</span>
+<span class="nc" id="L29">  private String fromIban;</span>
+<span class="nc" id="L30">  private String toIban;</span>
+<span class="nc" id="L31">  private BigDecimal amount;</span>
+<span class="nc" id="L32">  private String currency;</span>
+<span class="nc" id="L33">  private ZonedDateTime realisationDate;</span>
 <span class="fc" id="L34">  private String status;</span>
   @JsonIgnore
   @ManyToOne

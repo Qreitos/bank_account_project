@@ -10,12 +10,12 @@ import org.springframework.context.ApplicationEvent;
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
 <span class="nc" id="L12">  private String appUrl;</span>
-<span class="fc" id="L13">  private Customer customer;</span>
+<span class="nc" id="L13">  private Customer customer;</span>
 
   public OnRegistrationCompleteEvent(Customer customer, String appUrl) {
-<span class="fc" id="L16">    super(customer);</span>
-<span class="fc" id="L17">    this.customer = customer;</span>
-<span class="fc" id="L18">    this.appUrl = appUrl;</span>
-<span class="fc" id="L19">  }</span>
+<span class="nc" id="L16">    super(customer);</span>
+<span class="nc" id="L17">    this.customer = customer;</span>
+<span class="nc" id="L18">    this.appUrl = appUrl;</span>
+<span class="nc" id="L19">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

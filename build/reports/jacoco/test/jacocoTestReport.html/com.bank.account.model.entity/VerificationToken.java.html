@@ -26,18 +26,18 @@ public class VerificationToken {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-<span class="fc" id="L29">  private String token;</span>
+<span class="nc" id="L29">  private String token;</span>
 
   @OneToOne(targetEntity = Customer.class, fetch = FetchType.EAGER)
   @JoinColumn(nullable = false, name = &quot;customer_id&quot;)
-<span class="fc" id="L33">  private Customer customer;</span>
+<span class="nc" id="L33">  private Customer customer;</span>
 
 <span class="nc" id="L35">  private Date expiryDate;</span>
 
-<span class="fc" id="L37">  public VerificationToken(String token, Customer customer) {</span>
-<span class="fc" id="L38">    this.token = token;</span>
-<span class="fc" id="L39">    this.customer = customer;</span>
-<span class="fc" id="L40">  }</span>
+<span class="nc" id="L37">  public VerificationToken(String token, Customer customer) {</span>
+<span class="nc" id="L38">    this.token = token;</span>
+<span class="nc" id="L39">    this.customer = customer;</span>
+<span class="nc" id="L40">  }</span>
 
   private Date calculateExpiryDate(int expiryTimeInMinutes) {
 <span class="nc" id="L43">    Calendar calendar = Calendar.getInstance();</span>
@@ -47,7 +47,7 @@ public class VerificationToken {
   }
 
   public Long getId() {
-<span class="fc" id="L50">    return id;</span>
+<span class="nc" id="L50">    return id;</span>
   }
 
   public void setId(Long id) {
