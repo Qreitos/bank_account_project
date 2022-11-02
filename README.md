@@ -10,7 +10,7 @@
 - Flyway
 - MySQL
 
-[INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)
+[INSTRUCTIONS](https://bank-account-project.herokuapp.com/api/information)  
 (User manual)
 
 Bank Account rest API  
