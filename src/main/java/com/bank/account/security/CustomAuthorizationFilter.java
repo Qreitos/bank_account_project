@@ -31,7 +31,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(
-      HttpServletRequest request, // incoming request that we want to validate
+      // incoming request that we want to validate
+      HttpServletRequest request,
       @NotNull HttpServletResponse response,
       // response is going to be the content of endpoint, or error message
       @NotNull FilterChain filterChain) // actual filterChain from SecurityConfig

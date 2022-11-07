@@ -17,6 +17,7 @@ import com.bank.account.service.CustomerService;
 import com.bank.account.service.RetrofitService;
 import java.io.IOException;
 import java.time.ZonedDateTime;
+import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,6 @@ public class HomeController {
 
   private final CustomerService customerService;
   private final AccountService accountService;
-
   private final RetrofitService retrofitService;
 
 
