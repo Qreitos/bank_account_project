@@ -21,7 +21,7 @@ POST registration endpoint ("/api/register")
 ```java 
 @RequestMapping(value = "/register", method = POST)
 public ResponseEntity<RegistrationResponseDto> registerData(
-@RequestBody RegistrationRequestDto registrationData)
+@RequestBody RegistrationRequestDto registrationRequestDto)
 ```
 
 After successful registration, API will generate unique login number
