@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/service/CustomerServiceImplTest.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/service/AccountServiceImplTest.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/controller/LoginAndRegistrationControllerTest.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/controller/HomeControllerTest.java">
+<error line="13" column="8" severity="error" message="Unused import - com.fasterxml.jackson.core.JsonProcessingException." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="16" column="8" severity="error" message="Unused import - javax.transaction.Transactional." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/security/CustomAuthorizationFilterTest.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/advice/CustomerExceptionHandlerTest.java">
+<error line="5" column="8" severity="error" message="Unused import - com.bank.account.exception.CreateAccountErrorException." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="18" column="3" severity="error" message="&apos;METHOD_DEF&apos; should be separated from previous line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/test/java/com/bank/account/advice/AccountExceptionHandlerTest.java">
+</file>
+</checkstyle>

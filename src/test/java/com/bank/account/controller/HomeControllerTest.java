@@ -9,11 +9,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.bank.account.model.entity.Customer;
 import com.bank.account.model.entity.Transaction;
+import com.bank.account.repository.CustomerRepository;
 import com.bank.account.service.CustomerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import javax.transaction.Transactional;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -33,7 +36,14 @@ class HomeControllerTest {
   @Autowired
   private CustomerService customerService;
   @Autowired
+  private CustomerRepository customerRepository;
+  @Autowired
   ObjectMapper objectMapper;
+
+  @BeforeEach
+  void init() {
+    customerRepository.deleteAll();
+  }
 
   @Test
   void getHomeWithCurrency() throws Exception {

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 import com.bank.account.model.entity.Customer;
+import com.bank.account.repository.CustomerRepository;
 import com.bank.account.service.CustomerService;
 import java.io.IOException;
 import javax.servlet.FilterChain;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +26,14 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 class CustomAuthorizationFilterTest {
   @Autowired
-  CustomerService customerService;
+  private CustomerService customerService;
+  @Autowired
+  private CustomerRepository customerRepository;
+
+  @BeforeEach
+  void init() {
+    customerRepository.deleteAll();
+  }
 
   @Test
   public void custom_filter_test() throws ServletException, IOException {

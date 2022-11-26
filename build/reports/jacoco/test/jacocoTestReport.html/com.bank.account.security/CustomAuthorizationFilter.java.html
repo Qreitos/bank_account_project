@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomAuthorizationFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bank</a> &gt; <a href="index.source.html" class="el_package">com.bank.account.security</a> &gt; <span class="el_source">CustomAuthorizationFilter.java</span></div><h1>CustomAuthorizationFilter.java</h1><pre class="source lang-java linenums">package com.bank.account.security;
+
+import static java.util.Arrays.stream;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.cdimascio.dotenv.Dotenv;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import javax.servlet.FilterChain;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+<span class="fc" id="L30">public class CustomAuthorizationFilter extends OncePerRequestFilter {</span>
+
+  @Override
+  protected void doFilterInternal(
+      // incoming request that we want to validate
+      HttpServletRequest request,
+      @NotNull HttpServletResponse response,
+      // response is going to be the content of endpoint, or error message
+      @NotNull FilterChain filterChain) // actual filterChain from SecurityConfig
+      throws IOException {
+<span class="fc" id="L40">    String authorizationHeader = request.getHeader(</span>
+        AUTHORIZATION); // header is part of request, and we are checking for Authorization there
+    try {
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">      if (authorizationHeader != null &amp;&amp; authorizationHeader.startsWith(</span>
+          &quot;Bearer &quot;)) { // JWT token starts with &quot;Bearer &quot;
+<span class="fc" id="L45">        Dotenv dotenv = Dotenv.load(); // this is loading values from .env file you are storing locally</span>
+<span class="fc" id="L46">        String token = authorizationHeader.substring(</span>
+<span class="fc" id="L47">            &quot;Bearer &quot;.length()); // but we want only the rest of that String</span>
+<span class="fc" id="L48">        Algorithm algorithm =</span>
+<span class="fc" id="L49">            Algorithm.HMAC256(</span>
+<span class="fc" id="L50">                Objects.requireNonNull(dotenv.get(&quot;JWT_SECRET_KEY&quot;))</span>
+<span class="fc" id="L51">                    .getBytes(</span>
+                        StandardCharsets.UTF_8)); // this is algorithm used to sign or verify third part of JWT token
+<span class="fc" id="L53">        JWTVerifier verifier = JWT.require(algorithm)</span>
+<span class="fc" id="L54">            .build(); // setting up a verifier and using that algorithm, we created</span>
+<span class="fc" id="L55">        DecodedJWT decodedJWT = verifier.verify(</span>
+            token); // decodedJWT contains information about username, expiration time, roles of user etc.
+<span class="fc" id="L57">        String username = decodedJWT.getSubject(); // we get username of actual user like this</span>
+<span class="fc" id="L58">        String[] roles = decodedJWT.getClaim(&quot;roles&quot;)</span>
+<span class="fc" id="L59">            .asArray(String.class); // and this is how we extract his roles</span>
+<span class="fc" id="L60">        Collection&lt;SimpleGrantedAuthority&gt; authorities = new ArrayList&lt;&gt;(); // we need to convert his roles into &quot;Security format&quot;</span>
+<span class="pc" id="L61">        stream(roles).forEach(role -&gt; authorities.add(</span>
+            new SimpleGrantedAuthority(role))); // and we do it with this stream
+<span class="fc" id="L63">        UsernamePasswordAuthenticationToken authenticationToken =</span>
+            new UsernamePasswordAuthenticationToken(username, null,
+                authorities); // with this information we can create authentication token
+<span class="fc" id="L66">        SecurityContextHolder.getContext().setAuthentication(</span>
+            authenticationToken); // now we are authenticated in SecurityContextHolder
+<span class="fc" id="L68">        filterChain.doFilter(request, response); // and our filterChain is accepting our request</span>
+<span class="fc" id="L69">      } else {</span>
+<span class="fc" id="L70">        throw new Exception(</span>
+            &quot;Access denied.&quot;); // if we do not provide authorization header, we are going to get this exception
+      }
+<span class="fc" id="L73">    } catch (Exception e) { // and all exceptions are caught in here</span>
+<span class="fc" id="L74">      response.setHeader(&quot;error&quot;, e.getMessage()); // we put exception message into header</span>
+<span class="fc" id="L75">      response.setStatus(FORBIDDEN.value()); // we also set status as 403</span>
+<span class="fc" id="L76">      Map&lt;String, String&gt; error = new HashMap&lt;&gt;(); // this is just a fancy way to put error message into body as well</span>
+<span class="fc" id="L77">      error.put(&quot;Error&quot;, e.getMessage());</span>
+<span class="fc" id="L78">      response.setContentType(APPLICATION_JSON_VALUE);</span>
+<span class="nc" id="L79">      new ObjectMapper().writeValue(response.getOutputStream(), error);</span>
+<span class="fc" id="L80">    }</span>
+<span class="fc" id="L81">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

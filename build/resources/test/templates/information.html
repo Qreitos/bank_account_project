@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Api Information</title>
+</head>
+<body>
+<div>
+  <h1>Bank Account Project</h1>
+  <h2>User information</h2>
+  <div>
+    <h3>Registration instructions</h3>
+    <ul>
+      <li>POST: /api/registration</li>
+      <li>forName</li>
+      <li>surName</li>
+      <li>password</li>
+      <li>birthDate</li>
+      <li>email</li>
+    </ul>
+    <h4>After successful registration copy your login number, then verify your email</h4>
+    <img src="/registration.png">
+  </div>
+  <div>
+    <h3>Email verification</h3>
+    <ul>
+      <li>POST: /api/verification?token={yourToken}</li>
+    </ul>
+    <h4>Send token from email as parameter</h4>
+  </div>
+  <div>
+    <h3>Login instructions</h3>
+    <ul>
+      <li>POST: /api/login</li>
+      <li>loginNumber</li>
+      <li>password</li>
+    </ul>
+    <h4>Login with your login number and password</h4>
+    <h4>With successful login you will get access token,<br>
+      copy token to authorization bearer token.</h4>
+    <img src="/login.png"> <br>
+    <img src="/token.png">
+  </div>
+  <div>
+    <h3>Endpoints</h3>
+    <ul>
+      <li>GET: /api/home?currency={yourCurrency}</li>
+      <li>PUT: /api/create/account?accountType={accountType}</li>
+      <li>POST: /api/transaction?currency={yourCurrency}</li>
+      <li>GET: /api/movements</li>
+    </ul>
+    <h4>For creating transaction chose your currency</h4>
+    <ul>
+      <li>fromIban</li>
+      <li>toIban</li>
+      <li>amount</li>
+    </ul>
+    <img src="/transaction.png">
+  </div>
+</div>
+
+</body>
+</html>

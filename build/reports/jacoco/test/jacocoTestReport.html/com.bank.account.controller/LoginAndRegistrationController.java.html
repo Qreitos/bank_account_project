@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginAndRegistrationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bank</a> &gt; <a href="index.source.html" class="el_package">com.bank.account.controller</a> &gt; <span class="el_source">LoginAndRegistrationController.java</span></div><h1>LoginAndRegistrationController.java</h1><pre class="source lang-java linenums">package com.bank.account.controller;
+
+import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import com.bank.account.events.OnRegistrationCompleteEvent;
+import com.bank.account.exception.InvalidConfirmationTokenException;
+import com.bank.account.exception.LoginErrorException;
+import com.bank.account.exception.RegistrationErrorException;
+import com.bank.account.model.dto.ConfirmationResponseDto;
+import com.bank.account.model.dto.LoginRequestDto;
+import com.bank.account.model.dto.LoginResponseDto;
+import com.bank.account.model.dto.RegistrationRequestDto;
+import com.bank.account.model.dto.RegistrationResponseDto;
+import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.VerificationToken;
+import com.bank.account.service.CustomerService;
+import java.time.ZonedDateTime;
+import javax.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+<span class="fc" id="L31">@RequiredArgsConstructor</span>
+@RequestMapping(value = &quot;/api&quot;)
+public class LoginAndRegistrationController {
+
+  private final CustomerService customerService;
+  private final ApplicationEventPublisher applicationEventPublisher;
+
+  @RequestMapping(value = &quot;/login&quot;, method = POST)
+  public ResponseEntity&lt;LoginResponseDto&gt; loginData(@RequestBody LoginRequestDto customerLogin) {
+
+<span class="fc" id="L41">    String authenticationStatus = customerService.authentication(customerLogin);</span>
+
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">    if (authenticationStatus.equals(&quot;number=fail&quot;)) {</span>
+<span class="fc" id="L44">      throw new LoginErrorException(&quot;Login number not found&quot;);</span>
+    }
+<span class="nc bnc" id="L46" title="All 2 branches missed.">    if (authenticationStatus.equals(&quot;password=fail&quot;)) {</span>
+<span class="nc" id="L47">      throw new LoginErrorException(&quot;Wrong password&quot;);</span>
+    }
+<span class="nc bnc" id="L49" title="All 2 branches missed.">    if (!customerService.getCustomerByLoginNumber(customerLogin.getLoginNumber()).isEnabled()) {</span>
+<span class="nc" id="L50">      throw new LoginErrorException(&quot;Email not verified&quot;);</span>
+    }
+
+<span class="nc" id="L53">    org.springframework.security.core.userdetails.User loggingUser =</span>
+        (org.springframework.security.core.userdetails.User)
+<span class="nc" id="L55">            customerService.loadUserByLoginNumber(customerLogin.getLoginNumber());</span>
+
+<span class="nc" id="L57">    return ResponseEntity.ok()</span>
+<span class="nc" id="L58">        .body(new LoginResponseDto(&quot;Login successful&quot;, HttpStatus.OK,</span>
+<span class="nc" id="L59">            ZonedDateTime.now(), customerService.getToken(loggingUser)));</span>
+  }
+
+  @RequestMapping(value = &quot;/register&quot;, method = POST)
+  public ResponseEntity&lt;RegistrationResponseDto&gt; registerData(
+      @RequestBody RegistrationRequestDto registrationData,
+      HttpServletRequest request) {
+
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">    if (registrationData.getForName() == null</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        || registrationData.getSurName() == null</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        || registrationData.getPassword() == null</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        || registrationData.getBirthDate() == null</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        || registrationData.getEmail() == null) {</span>
+<span class="nc" id="L72">      throw new RegistrationErrorException(&quot;Invalid request&quot;);</span>
+    }
+
+<span class="fc" id="L75">    Integer newLoginNumber = customerService.createAndSaveNewCustomer(registrationData);</span>
+
+<span class="fc" id="L77">    Customer customer = customerService.getCustomerByLoginNumber(newLoginNumber);</span>
+<span class="fc" id="L78">    String url = request.getContextPath();</span>
+<span class="fc" id="L79">    this.applicationEventPublisher.publishEvent(new OnRegistrationCompleteEvent(customer, url));</span>
+
+<span class="fc" id="L81">    return ResponseEntity.accepted().body(</span>
+        new RegistrationResponseDto(&quot;Registration successful. &quot;
+            + &quot;Please confirm verification email and save your login number&quot;,
+<span class="fc" id="L84">            newLoginNumber, ACCEPTED, ZonedDateTime.now()));</span>
+  }
+
+  @RequestMapping(value = &quot;/verification&quot;, method = POST)
+  public ResponseEntity&lt;ConfirmationResponseDto&gt; emailConfirmation(
+      @RequestParam(name = &quot;token&quot;) String token) {
+
+<span class="fc" id="L91">    VerificationToken verificationToken = this.customerService.getVerificationToken(token);</span>
+<span class="pc bpc" id="L92" title="3 of 4 branches missed.">    if (verificationToken != null &amp;&amp; verificationToken.getCustomer() != null) {</span>
+<span class="nc" id="L93">      Customer customer = verificationToken.getCustomer();</span>
+<span class="nc" id="L94">      customer.setEnabled(true);</span>
+<span class="nc" id="L95">      this.customerService.saveCustomer(customer);</span>
+<span class="nc" id="L96">      return ResponseEntity.ok(</span>
+          new ConfirmationResponseDto(&quot;Verification successful, proceed to login&quot;,
+              ACCEPTED,
+<span class="nc" id="L99">              ZonedDateTime.now()));</span>
+    } else {
+<span class="fc" id="L101">      throw new InvalidConfirmationTokenException(&quot;Verification failed&quot;);</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

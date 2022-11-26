@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/RetrofitService.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/AccountServiceImpl.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/CustomerService.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/AccountService.java">
+<error line="9" column="8" severity="error" message="Unused import - org.springframework.stereotype.Service." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/CustomerServiceImpl.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/service/JsonPlaceHolderApi.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/controller/HomeController.java">
+<error line="20" column="8" severity="error" message="Unused import - java.util.Random." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="94" column="44" severity="error" message="&apos;(&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/controller/InformationController.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/controller/LoginAndRegistrationController.java">
+<error line="24" column="8" severity="error" message="Unused import - org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/utility/BigDecimalConverter.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/configuration/PersistanceConfiguration.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/configuration/StaticResourceConfiguration.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/security/PasswordConfig.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/security/SecurityConfig.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/security/CustomAuthorizationFilter.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/exception/InvalidConfirmationTokenException.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/exception/LoginErrorException.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/exception/RegistrationErrorException.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/exception/TransactionErrorException.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/exception/CreateAccountErrorException.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/advice/CustomerExceptionHandler.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/advice/AccountExceptionHandler.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/events/OnRegistrationCompleteEvent.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/events/RegistrationEventListener.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/enums/AccountType.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/repository/TransactionRepository.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/repository/RoleRepository.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/repository/CustomerRepository.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/repository/AccountRepository.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/repository/VerificationTokenRepository.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/entity/Account.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/entity/Transaction.java">
+<error line="6" column="8" severity="error" message="Unused import - java.util.ArrayList." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="7" column="8" severity="error" message="Unused import - java.util.List." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="12" column="8" severity="error" message="Unused import - javax.persistence.ManyToMany." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/entity/Customer.java">
+<error line="3" column="8" severity="error" message="Unused import - com.bank.account.model.dto.TransactionsDto." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/entity/Role.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/entity/VerificationToken.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/CustomerResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/RegistrationResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/RegistrationRequestDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/LoginResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/AccountCreateRequestDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/LoginRequestDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/AccountCreateResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/TransactionsDto.java">
+<error line="4" column="8" severity="error" message="Unused import - java.util.ArrayList." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/ConfirmationResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/ErrorResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/model/dto/ApiResponseDto.java">
+</file>
+<file name="/home/peter/Documents/bank_account_project/src/main/java/com/bank/account/BankApplication.java">
+<error line="3" column="8" severity="error" message="Unused import - com.bank.account.repository.RoleRepository." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="4" column="8" severity="error" message="Unused import - lombok.RequiredArgsConstructor." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+</checkstyle>

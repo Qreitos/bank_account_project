@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HomeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bank</a> &gt; <a href="index.source.html" class="el_package">com.bank.account.controller</a> &gt; <span class="el_source">HomeController.java</span></div><h1>HomeController.java</h1><pre class="source lang-java linenums">package com.bank.account.controller;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import com.bank.account.exception.CreateAccountErrorException;
+import com.bank.account.exception.LoginErrorException;
+import com.bank.account.exception.TransactionErrorException;
+import com.bank.account.model.dto.AccountCreateResponseDto;
+import com.bank.account.model.dto.CustomerResponseDto;
+import com.bank.account.model.dto.TransactionsDto;
+import com.bank.account.model.entity.Customer;
+import com.bank.account.model.entity.Transaction;
+import com.bank.account.service.AccountService;
+import com.bank.account.service.CustomerService;
+import com.bank.account.service.RetrofitService;
+import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.util.Random;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+<span class="fc" id="L31">@RequiredArgsConstructor</span>
+@RequestMapping(value = &quot;/api&quot;)
+public class HomeController {
+
+  private final CustomerService customerService;
+  private final AccountService accountService;
+  private final RetrofitService retrofitService;
+
+
+  @RequestMapping(value = &quot;/home&quot;, method = GET)
+  public ResponseEntity&lt;CustomerResponseDto&gt; getHomeWithCurrency(
+      @RequestHeader(name = &quot;Authorization&quot;) String token,
+      @RequestParam(name = &quot;currency&quot;) String currency) {
+
+<span class="nc bnc" id="L45" title="All 4 branches missed.">    if (token == null || currency == null) {</span>
+<span class="nc" id="L46">      throw new LoginErrorException(&quot;Not provided required data&quot;);</span>
+    }
+
+<span class="nc" id="L49">    String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+
+<span class="nc" id="L51">    CustomerResponseDto customerResponseDto = customerService.transferCustomerToDto(</span>
+<span class="nc" id="L52">        customerService.getCustomerFromToken(base64Token));</span>
+
+<span class="nc" id="L54">    customerResponseDto.getAccounts().forEach(account -&gt; {</span>
+      try {
+<span class="nc" id="L56">        account.setBalance(account.getBalance()</span>
+<span class="nc" id="L57">            .multiply(retrofitService.getCurrency(currency)));</span>
+<span class="nc" id="L58">        account.setCurrency(currency.toUpperCase());</span>
+<span class="nc" id="L59">      } catch (IOException | NoSuchMethodException e) {</span>
+<span class="nc" id="L60">        throw new LoginErrorException(e.getMessage());</span>
+<span class="nc" id="L61">      }</span>
+<span class="nc" id="L62">    });</span>
+<span class="nc" id="L63">    return ResponseEntity.ok().body(customerResponseDto);</span>
+  }
+
+  @RequestMapping(value = &quot;/create/account&quot;, method = PUT)
+  public ResponseEntity&lt;AccountCreateResponseDto&gt; createAccount(
+      @RequestHeader(name = &quot;Authorization&quot;) String token,
+      @RequestParam(name = &quot;accountType&quot;) String accountType) {
+
+    try {
+<span class="fc" id="L72">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="fc" id="L73">      accountService.createAccount(customerService.getCustomerFromToken(base64Token),</span>
+<span class="fc" id="L74">          accountType.toUpperCase());</span>
+<span class="nc" id="L75">    } catch (Exception e) {</span>
+<span class="nc" id="L76">      throw new CreateAccountErrorException(e.getMessage());</span>
+<span class="fc" id="L77">    }</span>
+<span class="fc" id="L78">    return ResponseEntity.ok().body(</span>
+        new AccountCreateResponseDto(&quot;Account created&quot;,
+            HttpStatus.ACCEPTED,
+<span class="fc" id="L81">            ZonedDateTime.now()));</span>
+  }
+
+  @RequestMapping(value = &quot;/transaction&quot;, method = POST)
+  public ResponseEntity&lt;Transaction&gt; realiseTransaction(
+      @RequestHeader(name = &quot;Authorization&quot;) String token,
+      @RequestParam(name = &quot;currency&quot;) String currency,
+      @RequestBody Transaction transaction) {
+
+    Transaction newTransaction;
+    try {
+<span class="fc" id="L92">      String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="fc" id="L93">      newTransaction =</span>
+<span class="fc" id="L94">          accountService.realiseTransaction( customerService.getCustomerFromToken(base64Token),</span>
+<span class="fc" id="L95">          transaction.getFromIban(), transaction.getToIban(), transaction.getAmount(), currency);</span>
+<span class="nc" id="L96">    } catch (IOException | NoSuchMethodException e) {</span>
+<span class="nc" id="L97">      throw new TransactionErrorException(e.getMessage());</span>
+<span class="fc" id="L98">    }</span>
+
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">    if (newTransaction.getStatus().equals(&quot;Realised&quot;)) {</span>
+<span class="nc" id="L101">      return ResponseEntity.ok().body(newTransaction);</span>
+    }
+<span class="fc" id="L103">    return ResponseEntity.badRequest().body(newTransaction);</span>
+  }
+
+  @RequestMapping(value = &quot;/movements&quot;, method = GET)
+  public ResponseEntity&lt;TransactionsDto&gt; getCustomerTransactions(
+      @RequestHeader(name = &quot;Authorization&quot;) String token) {
+
+<span class="fc" id="L110">    String base64Token = token.replace(token.substring(0, 7), &quot;&quot;);</span>
+<span class="fc" id="L111">    Customer customer = customerService.getCustomerFromToken(base64Token);</span>
+
+<span class="fc" id="L113">    return ResponseEntity.ok().body(new TransactionsDto(customer.getTransactions()));</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

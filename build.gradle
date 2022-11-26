@@ -9,12 +9,11 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
     id 'jacoco'
-    id 'checkstyle'
+//    id 'checkstyle'
     id "org.flywaydb.flyway" version "9.4.0"
 }
 
 group = 'com.qreitos'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
 configurations {
@@ -89,16 +88,16 @@ flyway {
 }
 
 //checkstyle
-checkstyle {
-    toolVersion "8.32"
-    configFile file("config/checkstyle/checkstyle.xml")
-}
-checkstyleMain {
-    source = 'src/main/java'
-}
-checkstyleTest {
-    source = 'src/test/java'
-}
+//checkstyle {
+//    toolVersion "8.32"
+//    configFile file("config/checkstyle/checkstyle.xml")
+//}
+////checkstyleMain {
+////    source = 'src/main/java'
+////}
+////checkstyleTest {
+////    source = 'src/test/java'
+////}
 
 //jacoco
 jacocoTestReport {

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CustomerServiceImplTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CustomerServiceImplTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.bank.account.service.html">com.bank.account.service</a> &gt; CustomerServiceImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">7</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">3.849s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">can_create_and_save_newCustomer_test()</td>
+<td class="success">0.577s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_create_verification_token_test()</td>
+<td class="success">0.553s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_fail_authentication_with_loginNumber_test()</td>
+<td class="success">0.547s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_fail_authentication_with_password_test()</td>
+<td class="success">0.528s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_get_customer_by_loginNumber_test()</td>
+<td class="success">0.504s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_get_customer_by_verification_token_test()</td>
+<td class="success">0.641s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">can_save_customer_test()</td>
+<td class="success">0.499s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-11-26 14:12:33.488  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bank.account.service.CustomerServiceImplTest], using SpringBootContextLoader
+2022-11-26 14:12:33.489  INFO 31660 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.bank.account.service.CustomerServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-11-26 14:12:33.489  INFO 31660 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bank.account.service.CustomerServiceImplTest]: CustomerServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-11-26 14:12:33.491  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bank.account.BankApplication for test class com.bank.account.service.CustomerServiceImplTest
+2022-11-26 14:12:33.493  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-11-26 14:12:33.494  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4a16702c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6dc64bc7, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@67601131, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@20e5da27, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@598b4907, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6cca982, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6142c9f3, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6ff8031e, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@6c38bc97, org.springframework.test.context.event.EventPublishingTestExecutionListener@f5b882b, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@78a1c562, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@57eed99b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7e9b1bf5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2dd2dedd, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5b2e84d0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7aadac2f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5c4f443c]
+2022-11-26 14:12:33.503  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:33.504  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2022-11-26 14:12:33.505  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:33.530  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:33.530  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:33.632  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:33.641  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:33.718  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2022-11-26 14:12:33.719  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2022-11-26 14:12:33.719  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:33.722  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:33.725  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.002s)
+2022-11-26 14:12:33.726  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:33.726  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:33.729  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:33.732  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.002s).
+2022-11-26 14:12:33.742  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.007s)
+2022-11-26 14:12:33.743  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:33.746  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:33.748  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:33.751  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:33.754  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:33.756  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:33.760  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:33.763  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:33.767  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:33.770  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:33.772  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.026s)
+2022-11-26 14:12:33.796  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:33.799  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:33.842  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:33.842  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:33.941  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d1f6e64, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4bad83d4, org.springframework.security.web.context.SecurityContextPersistenceFilter@4ef09a12, org.springframework.security.web.header.HeaderWriterFilter@6bfdf320, org.springframework.security.web.authentication.logout.LogoutFilter@4bab8fd7, com.bank.account.security.CustomAuthorizationFilter@474ff95b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5815dafc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c75562d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@500d1352, org.springframework.security.web.session.SessionManagementFilter@44233945, org.springframework.security.web.access.ExceptionTranslationFilter@2d277a9a]
+2022-11-26 14:12:33.943  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.943  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:33.943  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.943  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:33.943  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.943  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:33.944  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.944  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:33.944  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.944  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:33.944  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:33.944  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:33.980  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:34.025  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:34.123  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.616 seconds (JVM running for 34.613)
+2022-11-26 14:12:34.130  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating verification token
+2022-11-26 14:12:34.132  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Finding customer via token
+2022-11-26 14:12:34.142  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:34.142  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2022-11-26 14:12:34.143  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:34.157  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:34.157  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:34.218  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:34.227  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:34.296  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2022-11-26 14:12:34.297  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2022-11-26 14:12:34.297  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:34.300  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:34.302  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:34.302  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:34.302  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:34.305  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:34.307  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.001s).
+2022-11-26 14:12:34.310  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.001s)
+2022-11-26 14:12:34.311  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:34.312  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:34.313  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:34.317  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:34.319  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:34.321  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:34.324  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:34.327  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:34.329  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:34.332  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:34.333  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.021s)
+2022-11-26 14:12:34.349  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:34.352  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:34.388  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:34.388  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:34.485  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@549630c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69acbb06, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c55e517, org.springframework.security.web.header.HeaderWriterFilter@21271911, org.springframework.security.web.authentication.logout.LogoutFilter@436344af, com.bank.account.security.CustomAuthorizationFilter@23d58d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6774331c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e024172, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ba2320d, org.springframework.security.web.session.SessionManagementFilter@23bbb357, org.springframework.security.web.access.ExceptionTranslationFilter@20a561e0]
+2022-11-26 14:12:34.487  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.487  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:34.487  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.487  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:34.487  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.487  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:34.487  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.487  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:34.488  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.488  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:34.488  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:34.488  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:34.531  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:34.580  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:34.682  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.538 seconds (JVM running for 35.173)
+2022-11-26 14:12:34.688  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating verification token
+2022-11-26 14:12:34.695  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:34.695  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2022-11-26 14:12:34.696  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:34.712  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:34.712  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:34.796  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:34.805  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:34.877  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2022-11-26 14:12:34.878  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2022-11-26 14:12:34.879  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:34.880  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:34.883  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:34.883  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:34.883  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:34.886  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:34.887  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.001s).
+2022-11-26 14:12:34.895  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.005s)
+2022-11-26 14:12:34.896  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:34.898  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:34.899  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:34.901  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:34.903  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:34.905  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:34.907  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:34.910  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:34.912  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:34.915  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:34.916  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.019s)
+2022-11-26 14:12:34.931  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:34.933  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:34.966  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:34.967  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:35.054  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@15136ee9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b1e4394, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d8933dd, org.springframework.security.web.header.HeaderWriterFilter@32bbd221, org.springframework.security.web.authentication.logout.LogoutFilter@3008a367, com.bank.account.security.CustomAuthorizationFilter@3495d5dc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c15257a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@60d3c403, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41f35bb2, org.springframework.security.web.session.SessionManagementFilter@74421bc6, org.springframework.security.web.access.ExceptionTranslationFilter@224a74f2]
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:35.057  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.057  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:35.103  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:35.143  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:35.234  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.536 seconds (JVM running for 35.724)
+2022-11-26 14:12:35.239  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Login failed: loginNumber
+2022-11-26 14:12:35.242  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:35.242  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2022-11-26 14:12:35.243  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:35.258  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:35.258  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:35.325  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:35.332  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:35.392  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2022-11-26 14:12:35.392  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2022-11-26 14:12:35.392  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:35.394  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:35.396  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:35.397  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:35.397  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:35.399  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:35.401  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.001s).
+2022-11-26 14:12:35.404  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.001s)
+2022-11-26 14:12:35.405  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:35.407  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:35.408  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:35.410  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:35.413  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:35.415  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:35.417  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:35.420  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:35.422  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:35.424  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:35.425  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.018s)
+2022-11-26 14:12:35.447  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:35.449  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:35.482  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:35.482  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:35.566  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@45d439ce, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ca6ca4c, org.springframework.security.web.context.SecurityContextPersistenceFilter@3428de66, org.springframework.security.web.header.HeaderWriterFilter@7111907c, org.springframework.security.web.authentication.logout.LogoutFilter@1ebb10fb, com.bank.account.security.CustomAuthorizationFilter@618eac09, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@60477e7c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1da88078, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2774540b, org.springframework.security.web.session.SessionManagementFilter@1d4d80cc, org.springframework.security.web.access.ExceptionTranslationFilter@4cd31d12]
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:35.568  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:35.568  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:35.607  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:35.655  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:35.758  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.514 seconds (JVM running for 36.248)
+2022-11-26 14:12:35.766  WARN 31660 --- [    Test worker] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Encoded password does not look like BCrypt
+2022-11-26 14:12:35.766  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Login failed: password
+2022-11-26 14:12:35.769  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:35.770  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2022-11-26 14:12:35.770  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:35.780  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:35.781  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:35.839  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:35.845  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:35.908  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2022-11-26 14:12:35.909  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2022-11-26 14:12:35.909  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:35.911  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:35.914  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:35.914  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:35.914  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:35.920  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:35.921  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.001s).
+2022-11-26 14:12:35.925  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.001s)
+2022-11-26 14:12:35.926  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:35.927  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:35.928  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:35.930  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:35.932  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:35.935  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:35.937  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:35.940  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:35.942  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:35.944  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:35.946  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.018s)
+2022-11-26 14:12:35.960  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:35.962  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:35.996  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:35.996  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:36.090  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@514bda2d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1aebb9a9, org.springframework.security.web.context.SecurityContextPersistenceFilter@1456b9c, org.springframework.security.web.header.HeaderWriterFilter@78705cbf, org.springframework.security.web.authentication.logout.LogoutFilter@194930d9, com.bank.account.security.CustomAuthorizationFilter@7cd24969, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4651c36e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c3eeabf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ccd61d2, org.springframework.security.web.session.SessionManagementFilter@511bda0b, org.springframework.security.web.access.ExceptionTranslationFilter@144a6331]
+2022-11-26 14:12:36.091  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:36.092  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:36.092  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:36.092  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:36.092  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:36.092  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.092  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:36.131  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:36.176  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:36.272  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.501 seconds (JVM running for 36.763)
+2022-11-26 14:12:36.278  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating new customer
+2022-11-26 14:12:36.337  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating new account
+2022-11-26 14:12:36.347  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:36.347  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2022-11-26 14:12:36.348  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:36.359  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:36.359  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:36.424  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:36.430  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:36.490  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2022-11-26 14:12:36.491  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2022-11-26 14:12:36.491  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:36.492  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:36.495  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:36.495  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:36.495  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:36.498  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:36.500  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.002s).
+2022-11-26 14:12:36.504  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.001s)
+2022-11-26 14:12:36.504  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:36.506  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:36.507  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:36.509  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:36.511  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:36.513  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:36.515  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:36.517  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:36.519  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:36.522  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:36.523  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.017s)
+2022-11-26 14:12:36.539  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:36.541  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:36.572  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:36.573  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:36.660  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d359ba8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11747be9, org.springframework.security.web.context.SecurityContextPersistenceFilter@53481a02, org.springframework.security.web.header.HeaderWriterFilter@25937e5b, org.springframework.security.web.authentication.logout.LogoutFilter@516d2ba3, com.bank.account.security.CustomAuthorizationFilter@666a9929, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3926be58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7f96e81, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ee29674, org.springframework.security.web.session.SessionManagementFilter@7276f59c, org.springframework.security.web.access.ExceptionTranslationFilter@4d94e219]
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:36.662  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:36.662  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:36.705  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:36.746  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:36.837  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.488 seconds (JVM running for 37.327)
+2022-11-26 14:12:36.841  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Saving customer
+2022-11-26 14:12:36.847  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:36.848  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2022-11-26 14:12:36.848  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-11-26 14:12:36.859  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Starting CustomerServiceImplTest using Java 16.0.2 on peter-B250-FinTech with PID 31660 (started by peter in /home/peter/Documents/bank_account_project)
+2022-11-26 14:12:36.859  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-26 14:12:36.913  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:12:36.919  INFO 31660 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2022-11-26 14:12:36.983  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2022-11-26 14:12:36.984  INFO 31660 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2022-11-26 14:12:36.984  INFO 31660 --- [    Test worker] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:h2:mem:web (H2 2.1)
+2022-11-26 14:12:36.987  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:36.989  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.001s)
+2022-11-26 14:12:36.989  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully cleaned schema &quot;PUBLIC&quot; (execution time 00:00.000s)
+2022-11-26 14:12:36.990  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbClean        : Successfully dropped post-schema database level objects (execution time 00:00.000s)
+2022-11-26 14:12:36.992  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Repair of failed migration in Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; not necessary as table doesn't exist.
+2022-11-26 14:12:36.993  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbRepair       : Successfully repaired schema history table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; (execution time 00:00.001s).
+2022-11-26 14:12:36.997  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.001s)
+2022-11-26 14:12:36.998  INFO 31660 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot; ...
+2022-11-26 14:12:37.001  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2022-11-26 14:12:37.002  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;0 - create table accounts&quot;
+2022-11-26 14:12:37.004  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;1 - create table customers&quot;
+2022-11-26 14:12:37.006  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;2 - create table cusromers roles&quot;
+2022-11-26 14:12:37.009  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;3 - create table role&quot;
+2022-11-26 14:12:37.011  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;4 - create table transactions&quot;
+2022-11-26 14:12:37.014  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;5 - insert into role table&quot;
+2022-11-26 14:12:37.016  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;6 - create table tokens&quot;
+2022-11-26 14:12:37.019  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version &quot;7 - create table customers transactions&quot;
+2022-11-26 14:12:37.020  INFO 31660 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema &quot;PUBLIC&quot;, now at version v7 (execution time 00:00.019s)
+2022-11-26 14:12:37.034  INFO 31660 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:12:37.036  INFO 31660 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-11-26 14:12:37.072  INFO 31660 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:12:37.072  INFO 31660 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:12:37.162  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e72f32a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@312ccd51, org.springframework.security.web.context.SecurityContextPersistenceFilter@57d0ecd7, org.springframework.security.web.header.HeaderWriterFilter@107caf08, org.springframework.security.web.authentication.logout.LogoutFilter@4b8a60b0, com.bank.account.security.CustomAuthorizationFilter@4eb5dccb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7222f7fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@753125f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@56a2ba4d, org.springframework.security.web.session.SessionManagementFilter@37e568cb, org.springframework.security.web.access.ExceptionTranslationFilter@1e277e17]
+2022-11-26 14:12:37.164  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/login/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.164  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/login/**']
+2022-11-26 14:12:37.164  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/register/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.164  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/register/**']
+2022-11-26 14:12:37.164  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/information/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.164  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/information/**']
+2022-11-26 14:12:37.164  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/api/verification/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.164  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/api/verification/**']
+2022-11-26 14:12:37.164  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.165  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/resources/**']
+2022-11-26 14:12:37.165  WARN 31660 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/*']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-11-26 14:12:37.165  INFO 31660 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/*']
+2022-11-26 14:12:37.205  WARN 31660 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:12:37.248  INFO 31660 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:web'
+2022-11-26 14:12:37.340  INFO 31660 --- [    Test worker] c.b.a.service.CustomerServiceImplTest    : Started CustomerServiceImplTest in 0.491 seconds (JVM running for 37.831)
+2022-11-26 14:12:37.346  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Finding customer in repository
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5</a> at Nov 26, 2022, 2:12:37 PM</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bank.account.controller.LoginAndRegistrationControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-11-26T13:12:12" hostname="peter-B250-FinTech" time="20.28">
+  <properties/>
+  <testcase name="emailConfirmation()" classname="com.bank.account.controller.LoginAndRegistrationControllerTest" time="0.013"/>
+  <testcase name="can_register_data_test()" classname="com.bank.account.controller.LoginAndRegistrationControllerTest" time="20.252"/>
+  <testcase name="can_get_not_found_status()" classname="com.bank.account.controller.LoginAndRegistrationControllerTest" time="0.013"/>
+  <system-out><![CDATA[2022-11-26 14:12:12.202  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bank.account.controller.LoginAndRegistrationControllerTest], using SpringBootContextLoader
+2022-11-26 14:12:12.202  INFO 31660 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.bank.account.controller.LoginAndRegistrationControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-11-26 14:12:12.202  INFO 31660 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bank.account.controller.LoginAndRegistrationControllerTest]: LoginAndRegistrationControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-11-26 14:12:12.204  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bank.account.BankApplication for test class com.bank.account.controller.LoginAndRegistrationControllerTest
+2022-11-26 14:12:12.204  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-11-26 14:12:12.205  INFO 31660 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1f396b10, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@17bd3348, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4e7f12db, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@63e89d3e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@37dd1bb8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@49844978, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7f5b6359, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@587d00e1, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@7a2d08d, org.springframework.test.context.event.EventPublishingTestExecutionListener@6c068688, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@48e371fa, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@78290a0f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@699e8b3f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@31747242, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@624ba937, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5282be03, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4fd8001f]
+2022-11-26 14:12:12.210  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Getting token
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/verification
+       Parameters = {token=[testToken]}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.bank.account.controller.LoginAndRegistrationController
+           Method = com.bank.account.controller.LoginAndRegistrationController#emailConfirmation(String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = com.bank.account.exception.InvalidConfirmationTokenException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 406
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"message":null,"httpStatus":"NOT_ACCEPTABLE","timestamp":"2022-11-26T14:12:12.2144485+01:00"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2022-11-26 14:12:12.226  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating new customer
+2022-11-26 14:12:12.300  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating new account
+2022-11-26 14:12:12.309  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Finding customer in repository
+2022-11-26 14:12:12.310  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Creating verification token
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/register
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Content-Length:"100"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.bank.account.controller.LoginAndRegistrationController
+           Method = com.bank.account.controller.LoginAndRegistrationController#registerData(RegistrationRequestDto, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 202
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"message":"Registration successful. Please confirm verification email and save your login number","loginNumber":21157,"httpStatus":"ACCEPTED","responseDate":"2022-11-26T14:12:32.465819186+01:00"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2022-11-26 14:12:32.482  INFO 31660 --- [    Test worker] c.b.account.service.CustomerServiceImpl  : Login failed: loginNumber
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json", Content-Length:"36"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.bank.account.controller.LoginAndRegistrationController
+           Method = com.bank.account.controller.LoginAndRegistrationController#loginData(LoginRequestDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = com.bank.account.exception.LoginErrorException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"message":null,"httpStatus":"NOT_FOUND","timestamp":"2022-11-26T14:12:32.483267052+01:00"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
